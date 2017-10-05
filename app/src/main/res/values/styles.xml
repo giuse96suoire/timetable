@@ -1,0 +1,73 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="DrawerMenuItem">
+        <item name="android:typeface">serif</item>
+        <item name="android:textSize">@dimen/text_size_menu_item</item>
+        <item name="android:background">@drawable/menu_item_selector</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:padding">@dimen/global_padding</item>
+        <item name="android:drawablePadding">@dimen/global_padding</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:clickable">true</item>
+    </style>
+    <style name="BottomTextViewAsButtonStyle">
+        <item name="android:clickable">true</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/global_padding</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:background">@drawable/bottom_textview_as_button_selector</item>
+    </style>
+    <style name="ChipsStyle">
+        <item name="android:layout_marginStart">@dimen/global_margin</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/chips_selector</item>
+        <item name="android:textColor">@color/colorChipsText</item>
+        <item name="android:drawablePadding">@dimen/padding_chip_drawable</item>
+        <item name="android:paddingStart">@dimen/padding_start_chip</item>
+        <item name="android:paddingTop">@dimen/padding_top_bottom_chip</item>
+        <item name="android:paddingEnd">@dimen/padding_end_chip</item>
+        <item name="android:paddingBottom">@dimen/padding_top_bottom_chip</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/text_size_chip</item>
+    </style>
+    <style name="SessionTitleStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="AddSubjectTextViewStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_centerHorizontal">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:paddingTop">@dimen/global_padding</item>
+        <item name="android:paddingBottom">@dimen/global_padding</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textColor">@color/textview_as_button_selector</item>
+        <item name="android:visibility">visible</item>
+    </style>
+    <style name="SettingItemStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:drawablePadding">@dimen/global_padding</item>
+        <item name="android:layout_marginTop">@dimen/global_large_margin</item>
+    </style>
+</resources>
+

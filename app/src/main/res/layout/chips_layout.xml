@@ -1,0 +1,6 @@
+<TextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/ChipsStyle"
+    android:drawableEnd="@drawable/ic_remove_cicrle_grey_24dp"
+    android:id="@+id/tv_selected_subject_name"
+    android:text="Văn"/>

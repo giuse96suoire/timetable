@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/dl_main_drawer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- The main content view -->
+    <FrameLayout
+        android:id="@+id/fl_fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorMainBackground"/>
+    <!-- The navigation drawer -->
+    <FrameLayout
+        android:id="@+id/rv_right_drawer"
+        android:layout_width="260dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:background="@android:color/background_light"
+        android:orientation="vertical">
+
+        <include layout="@layout/notification_right_navigate_menu"/>
+    </FrameLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_left_drawer"
+        android:layout_width="260dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@drawable/gradient_background">
+
+        <RelativeLayout
+            android:id="@+id/rl_user_info_panel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/global_padding"
+            android:background="@color/colorPrimaryDark">
+
+            <ImageView
+                android:layout_centerVertical="true"
+                android:id="@+id/iv_user_avatar"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:src="@drawable/ic_account_circle_black_24dp"/>
+            <TextView
+                android:id="@+id/tv_user_name"
+                android:maxLines="2"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/iv_user_avatar"
+                android:layout_alignParentEnd="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:ellipsize="end"
+                android:text="Tên người dùng"
+                android:textColor="@color/colorWhite"/>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_menu_item_time_table"
+                style="@style/DrawerMenuItem"
+                android:background="@drawable/menu_item_selector"
+                android:drawableStart="@drawable/ic_calendar_white_24dp"
+                android:text="Thời khóa biểu"/>
+
+            <TextView
+                android:id="@+id/tv_menu_item_subjects"
+                style="@style/DrawerMenuItem"
+                android:drawableStart="@drawable/ic_subject_white_24dp"
+                android:text="Quản lý môn học"/>
+
+            <TextView
+                android:id="@+id/tv_menu_item_teachers"
+                style="@style/DrawerMenuItem"
+                android:drawableStart="@drawable/ic_teachers_black_24dp"
+                android:text="Danh sách thầy cô"/>
+
+            <TextView
+                android:id="@+id/tv_menu_item_score_board"
+                style="@style/DrawerMenuItem"
+                android:drawableStart="@drawable/ic_score_board_black_24dp"
+                android:text="Bảng điểm"/>
+
+            <TextView
+                android:id="@+id/tv_menu_item_friends"
+                style="@style/DrawerMenuItem"
+                android:drawableStart="@drawable/ic_perm_contact_calendar_black_24dp"
+                android:text="Bạn bè"/>
+
+            <TextView
+                android:id="@+id/tv_menu_item_settings"
+                style="@style/DrawerMenuItem"
+                android:drawableStart="@drawable/ic_settings_black_24dp"
+                android:text="Cài đặt"/>
+
+            <TextView
+                android:id="@+id/tv_menu_item_login"
+                style="@style/DrawerMenuItem"
+                android:background="@drawable/menu_item_selector"
+                android:drawableStart="@drawable/ic_account_circle_black_24dp"
+                android:text="Đăng nhập"/>
+
+        </LinearLayout>
+        <TextView
+            android:layout_margin="@dimen/global_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:textColor="@color/colorWhite"
+            android:text="Phiên bản 1.0"
+            android:layout_alignParentBottom="true"/>
+    </RelativeLayout>
+
+</android.support.v4.widget.DrawerLayout>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@drawable/positive_backgroud_selector0"
+    android:gravity="center"
+    android:layout_alignTop="@+id/ib_drop_down"
+    android:layout_alignBottom="@+id/ib_drop_down"
+    android:layout_toStartOf="@+id/ib_drop_down"
+    android:paddingTop="@dimen/global_medium_padding"
+    android:paddingBottom="@dimen/global_medium_padding"
+    android:paddingStart="@dimen/global_padding"
+    android:paddingEnd="@dimen/global_padding"
+    >
+    <TextView
+        android:gravity="center_vertical"
+        android:id="@+id/tv_timetable_name"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Thời khóa biểu"
+        android:ellipsize="end"
+        android:textSize="14sp"
+        android:layout_centerVertical="true"
+        android:maxLines="1"
+        android:textColor="@color/colorWhite"
+        android:layout_toStartOf="@+id/ib_drop_down"/>
+    <ImageButton
+        android:layout_centerVertical="true"
+        android:id="@+id/ib_drop_down"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:background="@drawable/circle_action_menu_background_selector"
+        android:src="@drawable/ic_arrow_drop_down_white_24dp"/>
+</RelativeLayout>

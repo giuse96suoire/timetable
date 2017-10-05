@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="dialog_padding">10dp</dimen>
+    <dimen name="dialog_title_text_size">20sp</dimen>
+    <dimen name="dialog_main_text_size">14sp</dimen>
+    <dimen name="text_view_padding">10dp</dimen>
+    <dimen name="padding_drawable_of_text_view">12dp</dimen>
+    <dimen name="margin_element_dialog">10dp</dimen>
+    <dimen name="margin_element">10dp</dimen>
+    <dimen name="text_size_subject_item_name">15sp</dimen>
+    <dimen name="text_size_subject_item_teacher">12sp</dimen>
+
+    <dimen name="global_padding">12dp</dimen>
+    <dimen name="global_large_padding">24dp</dimen>
+    <dimen name="global_large_margin">24dp</dimen>
+    <dimen name="global_medium_padding">6dp</dimen>
+    <dimen name="global_margin">12dp</dimen>
+    <dimen name="global_medium_margin">6dp</dimen>
+    <dimen name="text_size_menu_item">16sp</dimen>
+    <dimen name="padding_chip_drawable">10dp</dimen>
+    <dimen name="padding_start_chip">10dp</dimen>
+    <dimen name="padding_top_bottom_chip">2dp</dimen>
+    <dimen name="padding_end_chip">3dp</dimen>
+    <dimen name="text_size_chip">13sp</dimen>
+
+    <dimen name="global_radius">15dp</dimen>
+    <dimen name="dialog_width">300dp</dimen>
+
+
+</resources>

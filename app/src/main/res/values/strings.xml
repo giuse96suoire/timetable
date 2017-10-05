@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name">Thời Khóa Biểu</string>
+
+    <string name="facebook_app_id">128379541238621</string>
+    <string name="fb_login_protocol_scheme">fb128379541238621</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <string name="hint_search_subject">Tìm kiếm môn học</string>
+
+    <string name="title_subjects">Môn học</string>
+    <string name="title_time_table">Thời khóa biểu</string>
+    <string name="title_add_subject">Chọn môn học</string>
+    <string name="message_edit_error_cause_time">Chỉnh sửa thất bại. Thời gian kết thúc không được nhỏ hơn thời gian bắt đầu</string>
+    <string name="title_start">Bắt đầu</string>
+    <string name="title_end">Kết thúc</string>
+    <string name="message_edit_ok">Chỉnh sửa thành công</string>
+    <string name="message_insert_ok">Thêm dữ liệu thành công</string>
+    <string name="title_term_of_use">Bằng cách đăng nhập, bạn đã đồng ý với các điều khoản của chúng tôi</string>
+    <string name="title_login">Đăng nhập</string>
+    <string name="title_register">Đăng ký | Quên mật khẩu</string>
+    <string name="title_verify">Xác nhận</string>
+    <string name="title_create_password">Tạo mật khẩu</string>
+    <string name="message_phone_number_invalid">Số điện thoại không đúng</string>
+    <string name="message_create_first_info_success">Khởi tạo thông tin thành công</string>
+    <string name="message_create_first_info_failed">Khởi tạo thông tin thất bại</string>
+    <string name="message_login_failed">Đăng nhập thất bại</string>
+    <string name="message_login_success">Đăng nhập thành công</string>
+    <string name="message_please_fill_all_field">Hãy điền đầy đủ thông tin</string>
+    <string name="message_we_have_sent_sms_to_you">Chúng tôi đã gửi sms đến cho bạn</string>
+    <string name="label_description_silent_setting">Mọi thông báo từ ứng dụng sẽ được giữ im lặng</string>
+    <string name="label_description_auto_scan_contact_setting">Ứng dụng sẽ quét bạn bè trong danh bạ và tự động thêm vào danh sách bạn bè trong ứng dụng</string>
+    <string name="label_description_advertisement_setting">Xin lỗi vì quảng cáo xuất hiện trong ứng dụng, nhưng điều này giúp chúng tôi duy trì chi phí vận hành ứng dụng. Hãy tắt nếu quảng cáo không lành mạnh</string>
+    <string name="message_verify_code_invalid">Mã xác nhận không đúng</string>
+    <string name="title_select_subject">Chọn môn học</string>
+    <string name="label_review">Xem lại</string>
+    <string name="label_finish">Hoàn tất</string>
+
+
+</resources>

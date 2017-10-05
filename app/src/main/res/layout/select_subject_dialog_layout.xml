@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dotvn.huynh.thoikhoabieu.outer.ui.activity.subjects.AddSubjectActivity">
+    <RelativeLayout
+        android:id="@+id/rl_dialog_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:padding="@dimen/dialog_padding">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chọn môn học"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/dialog_title_text_size"/>
+
+        <Button
+            android:id="@+id/btn_dismiss"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/ic_close_white_24dp"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_below="@+id/rl_dialog_header"
+        android:layout_above="@+id/ll_bottom_button_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+        <include layout="@layout/activity_subjects"/>
+    </RelativeLayout>
+    
+    <LinearLayout
+        android:padding="@dimen/global_padding"
+        android:weightSum="2"
+        android:id="@+id/ll_bottom_button_panel"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:layout_weight="1"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/btn_reset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toStartOf="@+id/btn_finish"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/ic_refresh_black_24dp"
+            android:text="Làm lại"/>
+
+        <Button
+            android:layout_weight="1"
+            android:textColor="@color/colorPrimary"
+            android:layout_marginStart="@dimen/margin_element_dialog"
+            android:id="@+id/btn_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:drawableStart="@drawable/ic_check_black_24dp"
+            android:text="Hoàn tất"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layoutAnimation="@anim/animation_scale_from_center_controller"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_backgroud_selector"
+        android:orientation="vertical"
+        android:padding="@dimen/global_padding"
+        android:weightSum="1">
+
+        <TextView
+            android:id="@+id/tv_dialog_title"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/global_margin"
+            android:layout_marginTop="@dimen/global_margin"
+            android:text="Thêm môn học"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="@dimen/dialog_title_text_size"/>
+        <TextView
+            android:visibility="gone"
+            android:id="@+id/tv_input_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorPrimary"
+            android:text="Bạn phải điền đầy đủ thông tin"
+            android:textAlignment="center"/>
+
+        <EditText
+            android:id="@+id/et_subject_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_element_dialog"
+            android:background="@color/colorWhite"
+            android:drawablePadding="@dimen/padding_drawable_of_text_view"
+            android:drawableStart="@drawable/ic_subject_primary_24dp"
+            android:hint="Môn học"
+            android:imeActionLabel="Tiếp theo"
+            android:imeOptions="actionNext"
+            android:padding="@dimen/text_view_padding"
+            android:textSize="@dimen/dialog_main_text_size"/>
+
+        <AutoCompleteTextView
+            android:id="@+id/actv_teacher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_element_dialog"
+            android:background="@color/colorWhite"
+            android:drawablePadding="@dimen/padding_drawable_of_text_view"
+            android:drawableStart="@drawable/ic_teachers_primary_24dp"
+            android:hint="Giáo viên"
+            android:imeActionLabel="Xong"
+            android:imeOptions="actionDone"
+            android:padding="@dimen/text_view_padding"
+            android:textSize="@dimen/dialog_main_text_size"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/global_margin"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_dismiss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/btn_finish"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:text="Thoát"
+                android:textColor="@color/negative_text_color_selector"/>
+
+            <Button
+                android:id="@+id/btn_finish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/global_margin"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:text="Lưu"
+                android:textColor="@color/positive_text_color_selector"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

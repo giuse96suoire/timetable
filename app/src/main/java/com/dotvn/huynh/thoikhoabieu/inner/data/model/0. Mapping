@@ -1,0 +1,6 @@
+This is file to descript relationship of models
+- OneDay
+    - ItemOfDay
+        - Subject
+            - Teacher
+        - Other

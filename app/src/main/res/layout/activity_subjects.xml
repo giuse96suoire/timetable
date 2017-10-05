@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutAnimation="@anim/animation_push_left_in_controller">
+
+    <RelativeLayout
+        android:id="@+id/rl_selected_subjects"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/text_background"
+        android:gravity="center"
+        android:padding="@dimen/global_padding">
+
+        <TextView
+            android:id="@+id/tv_no_subject_selected"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chưa môn nào được chọn"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_list_subject_selected"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
+
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_fragment_subjects_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/rl_selected_subjects">
+
+    </FrameLayout>
+</RelativeLayout>

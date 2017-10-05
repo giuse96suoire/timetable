@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:padding="@dimen/global_padding"
+              tools:context="com.dotvn.huynh.thoikhoabieu.outer.ui.fragment.setting.SettingFragment">
+
+    <android.support.v7.widget.SwitchCompat
+        style="@style/SettingItemStyle"
+        android:drawableStart="@drawable/ic_volume_off_black_24dp"
+        android:text="Chế độ im lặng"/>
+    <TextView
+        android:layout_marginTop="@dimen/global_medium_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_description_silent_setting"/>
+    <android.support.v7.widget.SwitchCompat
+        style="@style/SettingItemStyle"
+        android:drawableStart="@drawable/ic_contacts_black_24dp"
+        android:text="Tự động cập nhập danh bạ"/>
+    <TextView
+        android:layout_marginTop="@dimen/global_medium_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_description_auto_scan_contact_setting"/>
+    <android.support.v7.widget.SwitchCompat
+        style="@style/SettingItemStyle"
+        android:drawableStart="@drawable/ic_dashboard_black_24dp"
+        android:text="Quảng cáo"/>
+    <TextView
+        android:layout_marginTop="@dimen/global_medium_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/label_description_advertisement_setting"/>
+
+</LinearLayout>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--<color name="colorPrimary">#e74636</color>-->
+    <color name="colorPrimary">#7337af</color>
+    <color name="colorPrimaryLight">#8649c2</color>
+    <color name="colorPrimaryDark">#511d84</color>
+    <color name="colorChipsBackground">#7337af</color>
+    <color name="colorChipsBackgroundPressed">#511d84</color>
+    <color name="colorAccent">#2cd29b</color>
+    <color name="colorWhite">#ffffff</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorTextBackground">#efefef</color>
+    <color name="colorTextBackgroundBorder">#4b4b4b</color>
+    <color name="colorChipsText">#ffffff</color>
+    <color name="colorChipsRemoveButton">#ffffff</color>
+
+    <color name="colorNegativeButton">#8b8b8b</color>
+    <color name="colorTextNegativeButton">#cecece</color>
+    <color name="colorPositiveButton">#e74636</color>
+    <color name="colorTextPositiveButton">#ffffff</color>
+    <color name="colorButtonPressed">#b7b7b7</color>
+    <color name="colorTextDialogMessage">#121212</color>
+
+    <color name="colorItemBackground0">#ffffff</color>
+    <color name="colorItemBackground1">#efefef</color>
+
+    <color name="colorDrawableTextView">#585858</color>
+    <color name="colorMainBackground">#F2F2F2</color>
+</resources>

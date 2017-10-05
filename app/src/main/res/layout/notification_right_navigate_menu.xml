@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:padding="@dimen/global_padding"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:padding="@dimen/global_medium_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textColor="#434343"
+            android:id="@+id/tv_notification_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="14sp"
+            android:text="Huynh vừa chia sẻ thời khóa biểu của anh ấy với bạn"/>
+        <TextView
+            android:drawablePadding="@dimen/global_padding"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/global_medium_margin"
+            android:layout_below="@+id/tv_notification_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="10sp"
+            android:text="17:56 29/06/2017"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:background="@color/colorItemBackground1"
+        android:padding="@dimen/global_medium_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:textColor="#434343"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="14sp"
+            android:text="Huynh vừa chỉnh sửa môn toán"/>
+        <TextView
+            android:drawablePadding="@dimen/global_padding"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/global_medium_margin"
+            android:layout_below="@+id/tv_notification_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="10sp"
+            android:text="17:56 29/06/2017"/>
+    </LinearLayout>
+    <LinearLayout
+        android:padding="@dimen/global_medium_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:textColor="#434343"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="14sp"
+            android:text="Huynh vừa xóa môn văn"/>
+        <TextView
+            android:drawablePadding="@dimen/global_padding"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/global_medium_margin"
+            android:layout_below="@+id/tv_notification_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="10sp"
+            android:text="17:56 29/06/2017"/>
+    </LinearLayout>
+    <LinearLayout
+        android:padding="@dimen/global_medium_padding"
+        android:background="@color/colorItemBackground1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:textColor="#434343"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="14sp"
+            android:text="Huynh vừa chia sẻ thời khóa biểu của anh ấy với bạn"/>
+        <TextView
+            android:drawablePadding="@dimen/global_padding"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/global_medium_margin"
+            android:layout_below="@+id/tv_notification_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="10sp"
+            android:text="17:56 29/06/2017"/>
+    </LinearLayout>
+    <LinearLayout
+        android:padding="@dimen/global_medium_padding"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:textColor="#434343"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="14sp"
+            android:text="Huynh đã xóa bạn ra khỏi danh sách chia sẻ"/>
+        <TextView
+            android:drawablePadding="@dimen/global_padding"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/global_medium_margin"
+            android:layout_below="@+id/tv_notification_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="10sp"
+            android:text="17:56 29/06/2017"/>
+    </LinearLayout>
+</LinearLayout>

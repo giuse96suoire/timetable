@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dotvn.huynh.thoikhoabieu.outer.ui.activity.createTimeTable.CreateTimeTableActivity">
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tl_header_timetable_setting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:tabSelectedTextColor="@color/colorAccent"
+        app:tabTextColor="@color/colorWhite">
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cài đặt chung"
+            />
+
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chia sẻ với"/>
+
+
+    </android.support.design.widget.TabLayout>
+
+
+    <FrameLayout
+        android:id="@+id/rl_timetable_share_setting"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tl_header_timetable_setting"
+        android:background="@color/colorMainBackground"
+        android:orientation="vertical">
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:padding="@dimen/global_padding"
+        android:id="@+id/rl_timetable_general_setting"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tl_header_timetable_setting"
+        android:orientation="vertical"
+        android:background="@color/colorMainBackground">
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="@dimen/global_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/et_timetable_name"
+                android:padding="@dimen/global_padding"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Tên thời khóa biểu"/>
+
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_marginTop="@dimen/global_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:padding="@dimen/global_padding"
+                android:id="@+id/et_timetable_description"
+                android:background="@android:color/transparent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Mô tả"/>
+
+        </android.support.design.widget.TextInputLayout>
+
+    </LinearLayout>
+</RelativeLayout>

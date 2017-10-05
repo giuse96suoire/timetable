@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/global_padding">
+
+    <CheckBox
+        android:id="@+id/cb_select_friend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        />
+
+    <TextView
+        android:id="@+id/tv_subject_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_element"
+        android:layout_toEndOf="@+id/cb_select_friend"
+        android:text="Toán học đại cương"
+        android:textSize="@dimen/text_size_subject_item_name"/>
+
+    <TextView
+        android:id="@+id/tv_subject_teacher"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/tv_subject_name"
+        android:layout_below="@+id/tv_subject_name"
+        android:layout_toEndOf="@+id/cb_select_friend"
+        android:text="Thầy Huynh"
+        android:textSize="@dimen/text_size_subject_item_teacher"/>
+</RelativeLayout>

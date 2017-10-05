@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/global_padding"
+    tools:context="com.dotvn.huynh.thoikhoabieu.outer.ui.activity.profile.ProfileActivity">
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="115dp"
+        android:layout_height="114dp"
+        android:src="@drawable/com_facebook_profile_picture_blank_square"
+       />
+
+
+    <TextView
+        android:layout_marginStart="@dimen/global_margin"
+        android:id="@+id/textView2"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Mạnh Hoàng Huynh"
+        android:textSize="18sp"
+        android:layout_alignTop="@+id/imageView5"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@+id/imageView5"/>
+    <EditText
+        android:background="@android:color/transparent"
+        android:enabled="false"
+        android:inputType="textPassword"
+        android:textSize="18sp"
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_below="@+id/textView2"
+        android:layout_alignParentEnd="true"
+        android:layout_alignStart="@+id/textView2"/>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    android:gravity="center_vertical|end">
+
+    <Spinner
+        android:id="@+id/sp_list_timetable"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_margin="@dimen/global_medium_margin"
+        android:layout_toStartOf="@+id/ll_menu_item_panel"
+        android:background="@android:color/transparent"
+        android:gravity="center_vertical">
+    </Spinner>
+
+    <TextView
+        android:id="@+id/tv_activity_title"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_margin="@dimen/global_medium_margin"
+        android:layout_toStartOf="@+id/ll_menu_item_panel"
+        android:gravity="center_vertical"
+        android:textColor="@color/colorWhite"
+        android:textSize="14sp"/>
+
+    <LinearLayout
+        android:id="@+id/ll_menu_item_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="end"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/item_sync"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="@dimen/global_medium_margin"
+            android:background="@drawable/circle_action_menu_background_selector"
+            android:src="@drawable/ic_sync_white_24dp"/>
+
+        <ImageButton
+            android:id="@+id/item_share"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="@dimen/global_medium_margin"
+            android:background="@drawable/circle_action_menu_background_selector"
+            android:src="@drawable/ic_share_white_24dp"/>
+
+        <ImageButton
+            android:id="@+id/item_add_friend"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="@dimen/global_medium_margin"
+            android:background="@drawable/circle_action_menu_background_selector"
+            android:src="@drawable/ic_person_add_white_24dp"
+            android:visibility="gone"/>
+
+        <ImageButton
+            android:id="@+id/item_add_group"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="@dimen/global_medium_margin"
+            android:background="@drawable/circle_action_menu_background_selector"
+            android:src="@drawable/ic_group_add_white_24dp"
+            android:visibility="gone"/>
+
+        <ImageButton
+            android:id="@+id/item_facebook"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="@dimen/global_medium_margin"
+            android:background="@drawable/circle_action_menu_background_selector"
+            android:src="@drawable/com_facebook_button_icon"
+            android:visibility="gone"/>
+
+        <ImageButton
+            android:id="@+id/item_notification"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="@dimen/global_medium_margin"
+            android:background="@drawable/circle_action_menu_background_selector"
+            android:src="@drawable/ic_notifications_white_24dp"/>
+
+        <ImageButton
+            android:id="@+id/item_more"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/circle_action_menu_background_selector"
+            android:src="@drawable/ic_more_vert_white_24dp"/>
+    </LinearLayout>
+</RelativeLayout>

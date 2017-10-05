@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:background="@drawable/subject_item_backgroud_selector1"
+    android:clickable="true"
+    android:gravity="center"
+    android:paddingBottom="12dp"
+    android:paddingEnd="@dimen/global_padding"
+    android:paddingStart="10dp"
+    android:paddingTop="@dimen/global_padding">
+
+    <CheckBox
+        android:id="@+id/cb_select_friend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/ll_friend_main_panel"
+        android:layout_alignParentStart="true"
+        android:visibility="gone"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_friend_name_stand_for_panel"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/cb_select_friend"
+        android:background="@drawable/subject_time_selector"
+        android:clickable="true"
+        android:gravity="center"
+        android:padding="7dp">
+
+        <TextView
+            android:id="@+id/tv_friend_name_stand_for"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="H"
+            android:textColor="@color/colorWhite"
+            android:textSize="14sp"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_friend_main_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/rl_friend_name_stand_for_panel"
+        android:layout_toStartOf="@+id/ll_subject_action_button_panel"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_friend_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingEnd="@dimen/global_margin"
+            android:paddingStart="@dimen/global_margin"
+            android:text="Manh Hoang Huynh"
+            android:textSize="@dimen/text_size_subject_item_name"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/tv_friend_phone_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingEnd="@dimen/global_margin"
+            android:paddingStart="@dimen/global_margin"
+            android:text="0988247131"
+            android:textSize="@dimen/text_size_subject_item_teacher"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_subject_action_button_panel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:visibility="gone"
+            android:id="@+id/ib_sms_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_sms_black_24dp"
+            />
+
+        <ImageButton
+            android:visibility="gone"
+            android:id="@+id/ib_call_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/global_large_margin"
+            android:background="@drawable/ic_call_black_24dp"
+            />
+
+        <ImageButton
+            android:id="@+id/ib_add_this_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/global_large_margin"
+            android:background="@drawable/ic_person_add_white_24dp"
+            android:visibility="visible"
+            />
+    </LinearLayout>
+</RelativeLayout>

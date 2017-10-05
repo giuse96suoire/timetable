@@ -1,0 +1,6 @@
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:drawable="@drawable/ic_calendar_dark_24dp" android:state_enabled="false">
+    </item>
+    <item android:drawable="@drawable/ic_calendar_primary_24dp" android:state_enabled="true">
+    </item>
+</selector>

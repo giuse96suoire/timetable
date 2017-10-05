@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:layout_width="match_parent"
+             android:layoutAnimation="@anim/animation_scale_from_center_controller"
+             android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:background="@drawable/dialog_backgroud_selector"
+        android:padding="@dimen/global_padding">
+
+        <TextView
+            android:id="@+id/tv_dialog_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/global_margin"
+            android:text="Bạn có chắc muốn xóa môn này ?"
+            android:textAlignment="center"
+            android:textColor="@color/colorTextDialogMessage"
+            android:textSize="16sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/global_margin"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btn_negative_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@+id/btn_finish"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:text="Thoát"
+                android:textColor="@color/negative_text_color_selector"/>
+
+            <Button
+                android:id="@+id/btn_positive_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="@dimen/global_margin"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:text="Lưu"
+                android:textColor="@color/positive_text_color_selector"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+</FrameLayout>

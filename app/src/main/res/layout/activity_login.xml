@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@drawable/gradient_background"
+    android:padding="@dimen/global_padding"
+    tools:context="com.dotvn.huynh.thoikhoabieu.outer.ui.activity.login.LoginActivity">
+
+    <android.support.v7.widget.CardView
+        card_view:cardBackgroundColor="#F0FFFFFF"
+        android:id="@+id/cv_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/global_large_padding">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@mipmap/ic_launcher"/>
+
+                <EditText
+                    android:id="@+id/et_telephone_number_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imageView"
+                    android:layout_marginTop="@dimen/global_large_margin"
+                    android:drawablePadding="@dimen/global_padding"
+                    android:drawableStart="@drawable/ic_local_phone_black_24dp"
+                    android:hint="Số điện thoại"
+                    android:imeOptions="actionNext"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:textSize="16sp"/>
+
+                <EditText
+                    android:id="@+id/et_password_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@+id/et_telephone_number_login"
+                    android:layout_marginTop="@dimen/global_margin"
+                    android:drawablePadding="@dimen/global_padding"
+                    android:inputType="textPassword"
+                    android:drawableStart="@drawable/ic_lock_outline_black_24dp"
+                    android:hint="Mật khẩu"
+                    android:imeOptions="actionDone"
+                    android:maxLines="1"
+                    android:textSize="16sp"/>
+
+                <Button
+                    android:drawableStart="@drawable/ic_power_settings_new_primary_24dp"
+                    android:drawablePadding="@dimen/global_medium_padding"
+                    android:background="@drawable/dash_border_backgroud_selector"
+                    android:padding="@dimen/global_padding"
+                    android:id="@+id/btn_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/et_password_login"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/global_margin"
+                    android:clickable="true"
+                    android:text="Đăng nhập"
+                    android:textColor="@color/colorPositiveButton"
+                    android:textSize="13sp"/>
+                <TextView
+                    android:id="@+id/tv_go_to_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btn_login"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/global_margin"
+                    android:clickable="true"
+                    android:text="Đăng ký | Quên mật khẩu"
+                    android:textColor="@color/positive_text_color_selector"
+                    android:textSize="12sp"/>
+                <TextView
+                    android:id="@+id/tv_or_login_with"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/tv_go_to_register"
+                    android:layout_marginTop="@dimen/global_large_margin"
+                    android:text="Hoặc đăng nhập với"
+                    android:textAlignment="center"/>
+
+                <Button
+                    android:id="@+id/btn_login_fb"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_or_login_with"
+                    android:layout_marginTop="@dimen/global_margin"
+                    android:background="@drawable/facebook_login_button_backgroud_selector"
+                    android:drawableStart="@drawable/com_facebook_button_icon_white"
+                    android:padding="@dimen/global_padding"
+                    android:text="Facebook"
+                    android:textColor="@color/colorWhite"/>
+
+                <TextView
+                    android:id="@+id/tv_term_of_use"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/btn_login_fb"
+                    android:layout_marginTop="@dimen/global_margin"
+                    android:text="@string/title_term_of_use"
+                    android:textAlignment="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_term_of_use"
+                    android:clickable="true"
+                    android:text="Điểu khoản và cam kết"
+                    android:textAlignment="center"
+                    android:textColor="@color/positive_text_color_selector"
+                    android:textStyle="bold"/>
+            </RelativeLayout>
+        </ScrollView>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        card_view:cardBackgroundColor="#F0FFFFFF"
+        android:id="@+id/cv_register"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="@dimen/global_large_padding">
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@mipmap/ic_launcher"/>
+                <EditText
+                    android:id="@+id/et_telephone_number_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imageView2"
+                    android:layout_marginTop="@dimen/global_large_margin"
+                    android:drawablePadding="@dimen/global_padding"
+                    android:drawableStart="@drawable/ic_local_phone_black_24dp"
+                    android:hint="Số điện thoại"
+                    android:imeOptions="actionNext"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:textSize="16sp"/>
+                <Button
+                    android:drawableStart="@drawable/ic_send_primary_24dp"
+                    android:background="@drawable/dash_border_backgroud_selector"
+                    android:id="@+id/btn_register"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/global_padding"
+                    android:layout_marginTop="15dp"
+                    android:text="Gửi mã xác nhận"
+                    android:textColor="@color/colorPositiveButton"
+                    android:drawablePadding="@dimen/global_medium_padding"
+                    android:textSize="13sp"
+                    android:layout_below="@+id/et_telephone_number_register"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:id="@+id/tv_back_to_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btn_register"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/global_margin"
+                    android:clickable="true"
+                    android:text="Quay lại đăng nhập"
+                    android:textColor="@color/positive_text_color_selector"
+                    android:textSize="12sp"/>
+                <TextView
+                    android:id="@+id/tv_term_of_use_register"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/tv_back_to_login"
+                    android:layout_marginTop="@dimen/global_large_margin"
+                    android:text="Hệ thống sẽ gửi mã xác nhận đến điện thoại. Hãy điền số điện thoại mà bạn có thể kiểm tra ngay bây giờ"
+                    android:textAlignment="center"/>
+            </RelativeLayout>
+        </ScrollView>
+    </android.support.v7.widget.CardView>
+    <android.support.v7.widget.CardView
+        card_view:cardBackgroundColor="#F0FFFFFF"
+        android:id="@+id/cv_verify"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="@dimen/global_large_padding">
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@mipmap/ic_launcher"/>
+                <EditText
+                    android:id="@+id/et_verify_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imageView3"
+                    android:layout_marginTop="@dimen/global_large_margin"
+                    android:drawablePadding="@dimen/global_padding"
+                    android:drawableStart="@drawable/ic_message_black_24dp"
+                    android:hint="Mã xác nhận"
+                    android:imeOptions="actionNext"
+                    android:inputType="phone"
+                    android:maxLines="1"
+                    android:textSize="16sp"/>
+                <Button
+                    android:drawableStart="@drawable/ic_send_primary_24dp"
+                    android:background="@drawable/dash_border_backgroud_selector"
+                    android:id="@+id/btn_verify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/global_padding"
+                    android:layout_marginTop="15dp"
+                    android:text="Xác nhận"
+                    android:textColor="@color/colorPositiveButton"
+                    android:drawablePadding="@dimen/global_medium_padding"
+                    android:textSize="13sp"
+                    android:layout_below="@+id/et_verify_code"
+                    android:layout_centerHorizontal="true"/>
+                <TextView
+                    android:id="@+id/tv_resend_verify_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/btn_verify"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/global_margin"
+                    android:clickable="true"
+                    android:text="Gửi lại mã xác nhận"
+                    android:textColor="@color/positive_text_color_selector"
+                    android:textSize="12sp"/>
+                <TextView
+                    android:id="@+id/tv_cancel_verify"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_resend_verify_code"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/global_large_margin"
+                    android:clickable="true"
+                    android:text="Hủy"
+                    android:textColor="@color/positive_text_color_selector"
+                    android:textSize="20sp"/>
+            </RelativeLayout>
+        </ScrollView>
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        card_view:cardBackgroundColor="#F0FFFFFF"
+        android:id="@+id/cv_create_password"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:padding="@dimen/global_large_padding">
+
+                <ImageView
+                    android:id="@+id/imageView4"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_centerHorizontal="true"
+                    android:src="@mipmap/ic_launcher"/>
+                <EditText
+                    android:id="@+id/et_create_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imageView4"
+                    android:layout_marginTop="@dimen/global_large_margin"
+                    android:drawablePadding="@dimen/global_padding"
+                    android:drawableStart="@drawable/ic_lock_outline_black_24dp"
+                    android:hint="Mật khẩu mới"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:maxLines="1"
+                    android:textSize="16sp"/>
+                <Button
+                    android:drawableStart="@drawable/ic_send_primary_24dp"
+                    android:background="@drawable/dash_border_backgroud_selector"
+                    android:id="@+id/btn_finish_create_password"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/global_padding"
+                    android:layout_marginTop="15dp"
+                    android:text="Hoàn thành"
+                    android:textColor="@color/colorPositiveButton"
+                    android:drawablePadding="@dimen/global_medium_padding"
+                    android:textSize="13sp"
+                    android:layout_below="@+id/et_create_password"
+                    android:layout_centerHorizontal="true"/>
+
+            </RelativeLayout>
+        </ScrollView>
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>
