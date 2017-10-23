@@ -12,10 +12,11 @@ import io.realm.annotations.PrimaryKey;
 
 public class RealmSubject extends RealmObject {
 
-    public RealmSubject(String id, String name, RealmTeacher teacher) {
+    public RealmSubject(String id, String name, RealmTeacher teacher, RealmScore score) {
         this.mId = id;
         this.mName = name.toLowerCase();
         this.mTeacher = teacher;
+        this.mScore = score;
     }
 
     @Ignore
@@ -31,7 +32,7 @@ public class RealmSubject extends RealmObject {
     private String mId;
     private String mName;
     private RealmTeacher mTeacher;
-
+    private RealmScore mScore;
     public String getId() {
         return mId;
     }
@@ -59,4 +60,11 @@ public class RealmSubject extends RealmObject {
         return mTeacher;
     }
 
+    public void setScore(RealmScore mScore) {
+        this.mScore = mScore;
+    }
+
+    public RealmScore getScore() {
+        return mScore;
+    }
 }

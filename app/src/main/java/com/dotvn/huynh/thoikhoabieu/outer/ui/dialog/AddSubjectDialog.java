@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import com.dotvn.huynh.thoikhoabieu.inner.data.model.Subject;
 import com.dotvn.huynh.thoikhoabieu.inner.data.model.Teacher;
 import com.dotvn.huynh.thoikhoabieu.outer.data.local.LocalDAOCallback;
 
+import java.util.List;
 import java.util.UUID;
 
 /**
@@ -29,13 +31,14 @@ import java.util.UUID;
 
 public class AddSubjectDialog extends DialogFragment {
     public static final String TAG = AddSubjectDialog.class.getSimpleName();
-    Interactors.SubjectInteractor mSubjectInteractor;
-    Button mBtnFinish, mBtnDismiss;
-    EditText mEtSubjectName;
-    TextView mTvInputError;
-    AutoCompleteTextView mActvTeacher;
-    LocalDAOCallback<Subject> mCallback;
-    Subject mSubject;
+    private Interactors.SubjectInteractor mSubjectInteractor;
+    private TextView mBtnFinish, mBtnDismiss;
+    private EditText mEtSubjectName;
+    private TextView mTvInputError;
+    private AutoCompleteTextView mActvTeacher;
+    private LocalDAOCallback<Subject> mCallback;
+    private Subject mSubject;
+    private List<Subject> mListSubject;
 
     @Nullable
     @Override
@@ -45,11 +48,11 @@ public class AddSubjectDialog extends DialogFragment {
             window.setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         }
         View view = inflater.inflate(R.layout.add_subject_dialog, container);
-        mEtSubjectName = (EditText) view.findViewById(R.id.et_subject_name);
-        mActvTeacher = (AutoCompleteTextView) view.findViewById(R.id.actv_teacher);
-        mBtnFinish = (Button) view.findViewById(R.id.btn_finish);
-        mBtnDismiss = (Button) view.findViewById(R.id.btn_dismiss);
-        mTvInputError = (TextView) view.findViewById(R.id.tv_input_error);
+        mEtSubjectName = view.findViewById(R.id.et_subject_name);
+        mActvTeacher = view.findViewById(R.id.actv_teacher);
+        mBtnFinish = view.findViewById(R.id.btn_finish);
+        mBtnDismiss = view.findViewById(R.id.btn_dismiss);
+        mTvInputError = view.findViewById(R.id.tv_input_error);
         return view;
     }
 
@@ -65,7 +68,6 @@ public class AddSubjectDialog extends DialogFragment {
         if (mSubject != null) {
             mEtSubjectName.setText(mSubject.getName());
             mActvTeacher.setText(mSubject.getTeacher().getName());
-            ((TextView) getView().findViewById(R.id.tv_dialog_title)).setText("Chỉnh sửa");
         }
 
     }
@@ -92,8 +94,14 @@ public class AddSubjectDialog extends DialogFragment {
             @Override
             public void onClick(View view) {
                 String subjectName = mEtSubjectName.getText().toString().trim();
+                if (isSubjectNameHasExisted(subjectName)) {
+                    mTvInputError.setVisibility(View.VISIBLE);
+                    mTvInputError.setText("Môn này đã tồn tại");
+                    return;
+                }
                 String teacherName = mActvTeacher.getText().toString().trim();
                 if (subjectName == null || subjectName.length() == 0 || teacherName == null || teacherName.length() == 0) {
+                    mTvInputError.setText("Hãy nhập đầy đủ thông tin");
                     mTvInputError.setVisibility(View.VISIBLE);
                     return;
                 }
@@ -118,11 +126,25 @@ public class AddSubjectDialog extends DialogFragment {
             }
         });
     }
-
+    private boolean isSubjectNameHasExisted(String subjectName) {
+        if (mListSubject == null || mListSubject.size() == 0) {
+            Log.d("xxx","mListSubject != null || mListSubject.size() == 0");
+            return false;
+        }
+        for (Subject s : mListSubject) {
+            if (s.getName().trim().toLowerCase().equals(subjectName.trim().toLowerCase())) {
+                Log.d("xxx","is exist =================>");
+                return true;
+            }
+        }
+        return false;
+    }
     public void setOnFinishCallback(final LocalDAOCallback<Subject> callback) {
         mCallback = callback;
     }
-
+    public void setCurrentListSubject(List<Subject> listSubject) {
+        mListSubject = listSubject;
+    }
     @Override
     public void onStop() {
         super.onStop();

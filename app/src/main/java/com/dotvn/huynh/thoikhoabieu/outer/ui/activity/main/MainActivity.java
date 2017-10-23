@@ -11,8 +11,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.PopupMenu;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +23,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,13 +33,17 @@ import com.dotvn.huynh.thoikhoabieu.R;
 import com.dotvn.huynh.thoikhoabieu.inner.data.model.TimeTable;
 import com.dotvn.huynh.thoikhoabieu.inner.data.model.User;
 import com.dotvn.huynh.thoikhoabieu.outer.data.local.shared.SharedDB;
+import com.dotvn.huynh.thoikhoabieu.outer.ui.CanSelectAllItem;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.activity.addFriend.SearchFriendActivity;
+import com.dotvn.huynh.thoikhoabieu.outer.ui.activity.chart.ChartActivity;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.activity.createTimeTable.CreateTimeTableActivity;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.activity.login.LoginActivity;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.activity.profile.ProfileActivity;
+import com.dotvn.huynh.thoikhoabieu.outer.ui.dialog.LoginDialog;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.dialog.TwoButtonDialog;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.fragment.friends.FriendsFragment;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.fragment.oneDay.OneDayFragment;
+import com.dotvn.huynh.thoikhoabieu.outer.ui.fragment.scoreBoard.ScoreBoardFragment;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.fragment.setting.SettingFragment;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.fragment.subjects.SubjectFragment;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.fragment.timeTable.TimeTableFragment;
@@ -54,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         OneDayFragment.OnFragmentInteractionListener, TimeTableFragment.OnFragmentInteractionListener,
         SubjectFragment.OnFragmentInteractionListener, SettingFragment.OnFragmentInteractionListener,
         FriendsFragment.OnFragmentInteractionListener,
+        ScoreBoardFragment.OnFragmentInteractionListener,
         View.OnClickListener, PopupMenu.OnMenuItemClickListener, AdapterView.OnItemSelectedListener {
 
     private Unbinder mUnbinder, mUnbinderActionBar;
@@ -77,13 +85,19 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     ImageView mIvItemFacebook;
     @BindView(R.id.item_more)
     ImageView mIvItemMore;
-
+    @BindView(R.id.item_chart_subject)
+    ImageView mIvItemChartSubject;
+    @BindView(R.id.item_select_all)
+    ImageView mIvItemSelectAll;
+    @BindView(R.id.item_cancel_select)
+    ImageView mIvItemCancelSelect;
+    @BindView(R.id.ll_select_menu_panel)
+    LinearLayout mLlSelectMenuPanel;
     @BindView(R.id.tv_menu_item_login)
     TextView mTvMenuItemUser;
     @BindView(R.id.tv_menu_item_friends)
     TextView mTvMenuItemFriends;
-    @BindView(R.id.tv_menu_item_score_board)
-    TextView mTvMenuItemScoreBoard;
+
     @BindView(R.id.tv_menu_item_settings)
     TextView mTvMenuItemSettings;
     @BindView(R.id.tv_menu_item_subjects)
@@ -102,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     @BindView(R.id.rl_left_drawer)
     RelativeLayout mRlLeftDrawer;
 
-    @BindView(R.id.rv_right_drawer)
+    @BindView(R.id.rv_right_drawer_notification)
     FrameLayout mFlRightDrawer;
 
     @BindView(R.id.dl_main_drawer)
@@ -110,6 +124,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     @BindView(R.id.sp_list_timetable)
     Spinner mSpListTimeTable;
 
+    @BindView(R.id.ll_menu_item_panel)
+    LinearLayout mLlMenuActionBarPanel;
     ProgressDialog mProgressDialog;
 
 
@@ -120,12 +136,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().setDisplayShowCustomEnabled(true);
-        getSupportActionBar().setCustomView(R.layout.main_action_bar);
-        mUnbinderActionBar = ButterKnife.bind(getSupportActionBar().getCustomView());
-        mUnbinder = ButterKnife.bind(this);
-        initView();
+        Toolbar toolbar = findViewById(R.id.main_toolbar);
+        setSupportActionBar(toolbar);
+        mUnbinder = ButterKnife.bind(MainActivity.this);
         initDrawerMenu();
+        initView();
         mPresenter = new MainPresenter(this, this);
         mPresenter.regisUserLoginStateChagedCallBack();
         mListTimeTableData = new ArrayList<>();
@@ -139,7 +154,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     protected void onDestroy() {
         super.onDestroy();
         mUnbinder.unbind();
-        mUnbinderActionBar.unbind();
+//        mUnbinderActionBar.unbind();
     }
 
     @Override
@@ -179,7 +194,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
                     @Override
                     public void onPositiveButtonClick() {
-                        mPresenter.syncData();
+                        int length = mListTimeTableData.size();
+                        if (length == 0) {
+                            return;
+                        }
+                        int index = mSpListTimeTable.getSelectedItemPosition();
+                        mPresenter.syncData(mListTimeTableData.get(index));
                         startAnimation(mIvItemSync, R.anim.rotation);
                     }
                 }
@@ -216,12 +236,16 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         mRlUserInfoPanel.setOnClickListener(this);
         mTvActivityTitle.setOnClickListener(this);
         mSpListTimeTable.setOnItemSelectedListener(this);
+        mTvMenuItemTimeTable.setSelected(true);
+        mIvItemCancelSelect.setOnClickListener(this);
+        mIvItemSelectAll.setOnClickListener(this);
+        mIvItemChartSubject.setOnClickListener(this);
+        enableSelectMode(false);
     }
 
     private void initDrawerMenu() {
         mTvMenuItemUser.setOnClickListener(this);
         mTvMenuItemFriends.setOnClickListener(this);
-        mTvMenuItemScoreBoard.setOnClickListener(this);
         mTvMenuItemSettings.setOnClickListener(this);
         mTvMenuItemSubjects.setOnClickListener(this);
         mTvMenuItemTeachers.setOnClickListener(this);
@@ -364,7 +388,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
             mIvItemAddGroup.setVisibility(View.GONE);
             mIvItemFacebook.setVisibility(View.GONE);
             mTvActivityTitle.setVisibility(View.VISIBLE);
+            mIvItemChartSubject.setVisibility(View.VISIBLE);
         } else if (tag.equals(FriendsFragment.TAG)) {
+            mIvItemChartSubject.setVisibility(View.GONE);
             mSpListTimeTable.setVisibility(View.GONE);
             mIvItemMore.setVisibility(View.GONE);
             mIvItemShare.setVisibility(View.GONE);
@@ -374,6 +400,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
             mIvItemAddFriend.setVisibility(View.VISIBLE);
             mTvActivityTitle.setVisibility(View.VISIBLE);
         } else if (tag.equals(TimeTableFragment.TAG)) {
+            mIvItemChartSubject.setVisibility(View.GONE);
             mSpListTimeTable.setVisibility(View.VISIBLE);
             mIvItemMore.setVisibility(View.VISIBLE);
             mIvItemShare.setVisibility(View.GONE);
@@ -383,6 +410,17 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
             mIvItemFacebook.setVisibility(View.GONE);
             mTvActivityTitle.setVisibility(View.GONE);
         } else if (tag.equals(SettingFragment.TAG)) {
+            mIvItemChartSubject.setVisibility(View.GONE);
+            mSpListTimeTable.setVisibility(View.GONE);
+            mIvItemMore.setVisibility(View.GONE);
+            mIvItemShare.setVisibility(View.GONE);
+            mIvItemSync.setVisibility(View.GONE);
+            mIvItemAddFriend.setVisibility(View.GONE);
+            mIvItemAddGroup.setVisibility(View.GONE);
+            mIvItemFacebook.setVisibility(View.VISIBLE);
+            mTvActivityTitle.setVisibility(View.VISIBLE);
+        } else if (tag.equals(ScoreBoardFragment.TAG)) {
+            mIvItemChartSubject.setVisibility(View.GONE);
             mSpListTimeTable.setVisibility(View.GONE);
             mIvItemMore.setVisibility(View.GONE);
             mIvItemShare.setVisibility(View.GONE);
@@ -438,19 +476,32 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         mSpListTimeTable.setSelection(0);
     }
 
+    @Override
+    public void enableSelectMode(boolean isEnable) {
+        mLlSelectMenuPanel.setVisibility(isEnable ? View.VISIBLE : View.GONE);
+        mLlMenuActionBarPanel.setVisibility(isEnable ? View.GONE : View.VISIBLE);
+    }
+
 
     @Override
     public void onClick(View v) {
         Log.d("xxx", FirebaseDatabase.getInstance().getReference().push().getKey());
         final int id = v.getId();
         switch (id) {
-            case R.id.tv_menu_item_login:
             case R.id.tv_menu_item_friends:
-            case R.id.tv_menu_item_score_board:
             case R.id.tv_menu_item_settings:
             case R.id.tv_menu_item_subjects:
             case R.id.tv_menu_item_teachers:
             case R.id.tv_menu_item_time_table:
+                mTvMenuItemFriends.setSelected(false);
+                mTvMenuItemSettings.setSelected(false);
+                mTvMenuItemSubjects.setSelected(false);
+                mTvMenuItemTeachers.setSelected(false);
+                mTvMenuItemTimeTable.setSelected(false);
+                mTvMenuItemUser.setSelected(false);
+                v.setSelected(true);
+                enableSelectMode(false);
+            case R.id.tv_menu_item_login:
                 mDlMainDrawer.closeDrawer(Gravity.LEFT);
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -459,11 +510,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
                     }
                 }, 220);
                 break;
-            case R.id.item_sync:
 
-                break;
-            case R.id.item_share:
-                break;
             case R.id.item_notification:
                 if (mDlMainDrawer.isDrawerOpen(Gravity.RIGHT)) {
                     mDlMainDrawer.closeDrawer(Gravity.RIGHT);
@@ -471,16 +518,44 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
                     mDlMainDrawer.openDrawer(Gravity.RIGHT);
                 }
                 break;
+            case R.id.item_chart_subject:
+                startActivity(new Intent(this, ChartActivity.class));
+                break;
             case R.id.item_add_friend:
                 startActivity(new Intent(MainActivity.this, SearchFriendActivity.class));
                 break;
             case R.id.item_more:
                 mMorePopupMenu.show();
                 break;
+            case R.id.item_select_all:
+                selectAllItem();
+                break;
+            case R.id.item_cancel_select:
+                enableSelectMode(false);
+                cancelSelectAllItem();
+                break;
 
         }
     }
 
+    private void selectAllItem() {
+        List<Fragment> listFragment = getSupportFragmentManager().getFragments();
+        for (Fragment f : listFragment) {
+            if (f instanceof CanSelectAllItem && f.isVisible()) {
+                ((CanSelectAllItem)f).selectAll();
+                break;
+            }
+        }
+    }
+    private void cancelSelectAllItem() {
+        List<Fragment> listFragment = getSupportFragmentManager().getFragments();
+        for (Fragment f : listFragment) {
+            if (f instanceof CanSelectAllItem && f.isVisible()) {
+                ((CanSelectAllItem)f).cancelSelectAll();
+                break;
+            }
+        }
+    }
 
     private void doSyncAction() {
         if (mIsLogined) {
@@ -499,14 +574,18 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
                         @Override
                         public void onPositiveButtonClick() {
-                            startActivity(new Intent(MainActivity.this, LoginActivity.class));
+                            openLogin();
                         }
                     }
             ).show();
         }
 
     }
-
+    private void openLogin() {
+//        startActivity(new Intent(this, LoginActivity.class));
+        LoginDialog loginDialog = new LoginDialog();
+        loginDialog.show(getSupportFragmentManager(),"");
+    }
     private void onMenuItemClick(int id) {
         switch (id) {
             case R.id.rl_user_info_panel:
@@ -516,7 +595,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
                 if (mIsLogined) {
                     FirebaseAuth.getInstance().signOut();
                 } else {
-                    startActivity(new Intent(this, LoginActivity.class));
+                    openLogin();
                 }
                 break;
             case R.id.tv_menu_item_friends:
@@ -524,8 +603,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
                 switchFragment(FriendsFragment.TAG);
                 break;
 
-            case R.id.tv_menu_item_score_board:
-                break;
+//            case R.id.tv_menu_item_score_board:
+//                switchFragment(ScoreBoardFragment.TAG);
+//                changeTitle("Bảng điểm");
+//
+//                break;
 
             case R.id.tv_menu_item_settings:
                 changeTitle("Cài đặt");
@@ -569,6 +651,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
             } else if (TAG.equals(FriendsFragment.TAG)) {
                 initOptionMenuByContext(FriendsFragment.TAG);
                 fragment = new FriendsFragment();
+            } else if (TAG.equals(ScoreBoardFragment.TAG)) {
+                initOptionMenuByContext(ScoreBoardFragment.TAG);
+                fragment = new ScoreBoardFragment();
             }
         }
         getSupportFragmentManager()
@@ -576,7 +661,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
                 .replace(R.id.fl_fragment_container, fragment, TAG)
                 .commit();
     }
+
     private String[] mOneDaysIdArray = new String[7];
+
     private void switchTimeTable(TimeTable timeTable) {
 
         for (int i = 0; i < timeTable.getData().size(); i++) {
@@ -590,11 +677,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
 
     }
 
@@ -628,10 +710,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         animation.setDuration(mTvMenuItemFriends.getText().length() * TIME_CONSTANT);
         mTvMenuItemFriends.startAnimation(animation);
 
-        animation = AnimationUtils.loadAnimation(getApplicationContext(),
-                R.anim.left_to_right_slide);
-        animation.setDuration(mTvMenuItemScoreBoard.getText().length() * TIME_CONSTANT);
-        mTvMenuItemScoreBoard.startAnimation(animation);
     }
 
     @Override

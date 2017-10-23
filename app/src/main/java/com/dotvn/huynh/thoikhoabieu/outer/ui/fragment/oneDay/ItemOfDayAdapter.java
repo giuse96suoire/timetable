@@ -22,7 +22,7 @@ import android.widget.TextView;
 import com.dotvn.huynh.thoikhoabieu.R;
 import com.dotvn.huynh.thoikhoabieu.inner.data.model.ItemOfDay;
 import com.dotvn.huynh.thoikhoabieu.inner.data.model.Subject;
-import com.dotvn.huynh.thoikhoabieu.outer.ui.fragment.subjects.SubjectFragment;
+import com.dotvn.huynh.thoikhoabieu.outer.ui.fragment.subjects.OnSubjectCheckedChangeListener;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.support.DragShadowBuilder;
 import com.dotvn.huynh.thoikhoabieu.outer.util.DayUtil;
 
@@ -45,7 +45,7 @@ public class ItemOfDayAdapter extends RecyclerView.Adapter<ItemOfDayAdapter.View
 
     private Context mContext;
     private OneDayContract.View mView;
-    private SubjectFragment.OnSubjectCheckedChangeListener mOnSubjectCheckedChange;
+    private OnSubjectCheckedChangeListener mOnSubjectCheckedChange;
 
     public ItemOfDayAdapter(Context context, OneDayContract.View view, List<ItemOfDay> listSubject, boolean isSelectableMode) {
         this.mListItemOfDay = listSubject;
@@ -65,7 +65,7 @@ public class ItemOfDayAdapter extends RecyclerView.Adapter<ItemOfDayAdapter.View
         mListSelectedSubjects.remove(subject);
     }
 
-    public void setOnSubjectCheckedChangeListener(SubjectFragment.OnSubjectCheckedChangeListener listener) {
+    public void setOnSubjectCheckedChangeListener(OnSubjectCheckedChangeListener listener) {
         mOnSubjectCheckedChange = listener;
     }
 
@@ -89,8 +89,8 @@ public class ItemOfDayAdapter extends RecyclerView.Adapter<ItemOfDayAdapter.View
                 (itemOfDay.getEndTime() == null || itemOfDay.getEndTime().length() == 0)
                         ? "00:00"
                         : itemOfDay.getEndTime());
-//        holder.mRlSubjectTimePanel.setVisibility(mIsSelectableMode ? View.GONE : View.VISIBLE);
-        holder.mCbSelectSubject.setVisibility(mIsSelectableMode ? View.VISIBLE : View.GONE);
+        holder.mRlSubjectTimePanel.setVisibility(mIsSelectableMode ? View.GONE : View.VISIBLE);
+        holder.mRlSelectPanel.setVisibility(mIsSelectableMode ? View.VISIBLE : View.GONE);
         if (mIsSelectableMode) {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -101,7 +101,7 @@ public class ItemOfDayAdapter extends RecyclerView.Adapter<ItemOfDayAdapter.View
             holder.mCbSelectSubject.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    mOnSubjectCheckedChange.OnSubjectCheckedChange(isChecked, subject);
+                    mOnSubjectCheckedChange.onSubjectCheckedChange(isChecked, subject);
                     if (isChecked) {
                         addIfNotExist(subject);
                     } else {
@@ -331,7 +331,7 @@ public class ItemOfDayAdapter extends RecyclerView.Adapter<ItemOfDayAdapter.View
         private CheckBox mCbSelectSubject;
         private RelativeLayout mRlSubjectTimePanel;
         private ImageButton mIbSubjectEvent;
-
+        private RelativeLayout mRlSelectPanel;
         public CheckBox getCbSelectSubject() {
             return mCbSelectSubject;
         }
@@ -344,7 +344,8 @@ public class ItemOfDayAdapter extends RecyclerView.Adapter<ItemOfDayAdapter.View
             mTvSubjectEndTime = (TextView) itemView.findViewById(R.id.tv_subject_end_time);
             mCbSelectSubject = (CheckBox) itemView.findViewById(R.id.cb_select_friend);
             mIbSubjectEvent = (ImageButton) itemView.findViewById(R.id.ib_subject_event);
-            mRlSubjectTimePanel = (RelativeLayout) itemView.findViewById(R.id.rl_friend_name_stand_for_panel);
+            mRlSubjectTimePanel = (RelativeLayout) itemView.findViewById(R.id.rl_subject_start_panel);
+            mRlSelectPanel = (RelativeLayout) itemView.findViewById(R.id.rl_select_panel);
         }
 
     }

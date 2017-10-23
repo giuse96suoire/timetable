@@ -7,15 +7,15 @@
     <dimen name="padding_drawable_of_text_view">12dp</dimen>
     <dimen name="margin_element_dialog">10dp</dimen>
     <dimen name="margin_element">10dp</dimen>
-    <dimen name="text_size_subject_item_name">15sp</dimen>
+    <dimen name="text_size_subject_item_name">14sp</dimen>
     <dimen name="text_size_subject_item_teacher">12sp</dimen>
 
-    <dimen name="global_padding">12dp</dimen>
-    <dimen name="global_large_padding">24dp</dimen>
-    <dimen name="global_large_margin">24dp</dimen>
-    <dimen name="global_medium_padding">6dp</dimen>
-    <dimen name="global_margin">12dp</dimen>
-    <dimen name="global_medium_margin">6dp</dimen>
+    <dimen name="global_padding">16dp</dimen>
+    <dimen name="global_large_padding">32dp</dimen>
+    <dimen name="global_large_margin">32dp</dimen>
+    <dimen name="global_medium_padding">8dp</dimen>
+    <dimen name="global_margin">16dp</dimen>
+    <dimen name="global_medium_margin">8dp</dimen>
     <dimen name="text_size_menu_item">16sp</dimen>
     <dimen name="padding_chip_drawable">10dp</dimen>
     <dimen name="padding_start_chip">10dp</dimen>

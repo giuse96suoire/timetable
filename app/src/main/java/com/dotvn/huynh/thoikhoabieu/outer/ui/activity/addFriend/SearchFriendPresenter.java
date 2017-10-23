@@ -39,10 +39,10 @@ public class SearchFriendPresenter implements SearchFriendConstract.Presenter {
                                 && result != null &&
                                 result.getUid().equals(FirebaseAuth.getInstance().getCurrentUser().getUid()))) {
                     mView.showToast("Không tìm thấy");
-                    mView.updateData(FriendConverter.getInstance().fromUserModelToFriendModel(null));
+                    mView.updateData(FriendConverter.fromUserModelToFriendModel(null));
                 } else {
                     mView.showToast("Đã tìm thấy "+result.getPhoneNumber());
-                    mView.updateData(FriendConverter.getInstance().fromUserModelToFriendModel(result));
+                    mView.updateData(FriendConverter.fromUserModelToFriendModel(result));
                 }
             }
 
@@ -77,7 +77,7 @@ public class SearchFriendPresenter implements SearchFriendConstract.Presenter {
 
             }
         });
-//        FirebaseUser cuser = FirebaseAuth.getInstance().getCurrentUser();
+//        FirebaseUser cuser = FirebaseAuth.getCurrentUser();
 //        if (cuser == null) {
 //            mView.showToast("Bạn chưa đăng nhập");
 //            return;

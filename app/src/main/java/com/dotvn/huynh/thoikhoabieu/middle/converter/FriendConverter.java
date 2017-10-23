@@ -17,16 +17,8 @@ import io.realm.RealmList;
  */
 
 public class FriendConverter {
-    private static FriendConverter mInstance;
 
-    public static FriendConverter getInstance() {
-        if (mInstance == null) {
-            mInstance = new FriendConverter();
-        }
-        return mInstance;
-    }
-
-    public Friend fromFirebaseToModel(FbFriend firebaseFriend) {
+    public static Friend fromFirebaseToModel(FbFriend firebaseFriend) {
         if (firebaseFriend == null) {
             return null;
         }
@@ -38,7 +30,7 @@ public class FriendConverter {
         );
     }
 
-    public Friend fromMapFirebaseToModel(Map<String, String> firebaseFriend) {
+    public static  Friend fromMapFirebaseToModel(Map<String, String> firebaseFriend) {
         Friend friend = new Friend();
         for (Map.Entry<String, String> entry : firebaseFriend.entrySet()) {
             friend.setPhoneNumber(entry.getKey());
@@ -48,7 +40,7 @@ public class FriendConverter {
         return friend;
     }
 
-    public FbFriend fromModelToFirebase(Friend friend) {
+    public static  FbFriend fromModelToFirebase(Friend friend) {
         if (friend == null) {
             return null;
         }
@@ -60,7 +52,7 @@ public class FriendConverter {
         );
     }
 
-    public Map<String, String> fromModelToMapFirebase(Friend friend) {
+    public static  Map<String, String> fromModelToMapFirebase(Friend friend) {
         if (friend == null) {
             return null;
         }
@@ -69,7 +61,7 @@ public class FriendConverter {
         return result;
     }
 
-    public Map<String, String> fromListModelToMapFirebase(List<Friend> listFriend) {
+    public static  Map<String, String> fromListModelToMapFirebase(List<Friend> listFriend) {
         if (listFriend == null) {
             return null;
         }
@@ -83,7 +75,7 @@ public class FriendConverter {
         return result;
     }
 
-    public RealmFriend fromModelToRealm(Friend friend) {
+    public static  RealmFriend fromModelToRealm(Friend friend) {
         if (friend == null) {
             return null;
         }
@@ -95,7 +87,7 @@ public class FriendConverter {
         );
     }
 
-    public Friend fromRealmToModel(RealmFriend realmFriend) {
+    public static  Friend fromRealmToModel(RealmFriend realmFriend) {
         if (realmFriend == null) {
             return null;
         }
@@ -107,7 +99,7 @@ public class FriendConverter {
         );
     }
 
-    public Map<String, Friend> fromMapFirebaseToMapModel(Map<String, FbFriend> fbMap) {
+    public static  Map<String, Friend> fromMapFirebaseToMapModel(Map<String, FbFriend> fbMap) {
         if (fbMap == null) {
             return null;
         }
@@ -119,7 +111,7 @@ public class FriendConverter {
         return result;
     }
 
-    public Map<String, FbFriend> fromMapModelToMapFirebase(List<Friend> list) {
+    public static  Map<String, FbFriend> fromMapModelToMapFirebase(List<Friend> list) {
         if (list == null)
             return null;
         Map<String, FbFriend> result = new HashMap<>();
@@ -130,7 +122,7 @@ public class FriendConverter {
         return result;
     }
 
-    public RealmList<RealmFriend> fromListModelToListRealm(List<Friend> list) {
+    public static RealmList<RealmFriend> fromListModelToListRealm(List<Friend> list) {
         if (list == null) {
             return null;
         }
@@ -141,7 +133,7 @@ public class FriendConverter {
         return result;
     }
 
-    public List<Friend> fromMapFirebaseToListModel(Map<String, String> map) {
+    public static List<Friend> fromMapFirebaseToListModel(Map<String, String> map) {
         if (map == null) {
             return null;
         }
@@ -155,7 +147,7 @@ public class FriendConverter {
         return result;
     }
 
-    public List<Friend> fromListRealmToListModel(List<RealmFriend> realmFriends) {
+    public static List<Friend> fromListRealmToListModel(List<RealmFriend> realmFriends) {
         if (realmFriends == null) {
             return null;
         }
@@ -166,7 +158,7 @@ public class FriendConverter {
         return result;
     }
 
-    public Friend fromUserModelToFriendModel(User user) {
+    public static Friend fromUserModelToFriendModel(User user) {
         if (user == null) {
             return null;
         }

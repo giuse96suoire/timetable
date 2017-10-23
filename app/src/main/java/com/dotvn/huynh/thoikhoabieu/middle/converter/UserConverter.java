@@ -37,7 +37,7 @@ public class UserConverter {
                 firebaseUser.getPhoneNumber(),
                 firebaseUser.getPhotoUrl(),
                 firebaseUser.getProviderId(),
-                FriendConverter.getInstance().fromMapFirebaseToListModel(firebaseUser.getFriends())
+                FriendConverter.fromMapFirebaseToListModel(firebaseUser.getFriends())
         );
     }
 
@@ -49,7 +49,7 @@ public class UserConverter {
                 realmUser.getPhoneNumber(),
                 realmUser.getPhotoUrl(),
                 realmUser.getProviderId(),
-                FriendConverter.getInstance().fromListRealmToListModel(realmUser.getListFriend())
+                FriendConverter.fromListRealmToListModel(realmUser.getListFriend())
         );
     }
 
@@ -61,7 +61,7 @@ public class UserConverter {
                 user.getPhoneNumber(),
                 user.getPhotoUrl(),
                 user.getProviderId(),
-                FriendConverter.getInstance().fromListModelToListRealm(user.getFriends())
+                FriendConverter.fromListModelToListRealm(user.getFriends())
         );
     }
 
@@ -73,7 +73,7 @@ public class UserConverter {
                 user.getPhoneNumber(),
                 user.getPhotoUrl(),
                 user.getProviderId(),
-                FriendConverter.getInstance().fromListModelToMapFirebase(user.getFriends())
+                FriendConverter.fromListModelToMapFirebase(user.getFriends())
         );
     }
 }

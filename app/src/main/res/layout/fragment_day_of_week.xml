@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                xmlns:tools="http://schemas.android.com/tools"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                tools:context="com.dotvn.huynh.thoikhoabieu.outer.ui.fragment.oneDay.OneDayFragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.dotvn.huynh.thoikhoabieu.outer.ui.fragment.oneDay.OneDayFragment">
 
 
     <RelativeLayout
@@ -16,7 +16,7 @@
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_centerInParent="true"
-            android:src="@drawable/ic_thumb_down_black_24dp"/>
+            android:src="@drawable/ic_thumb_down_black_24dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -26,59 +26,52 @@
             android:layout_marginTop="10dp"
             android:text="KHÔNG CÓ DỮ LIỆU"
             android:textColor="#b1b1b1"
-            android:textSize="20sp"/>
+            android:textSize="20sp" />
     </RelativeLayout>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_toEndOf="@+id/rl_nodata">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true">
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.v7.widget.CardView
-                android:layout_marginTop="@dimen/global_margin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-               >
+            <android.support.v7.widget.CardView style="@style/CardViewSessionStyle">
 
-                <RelativeLayout
-                    android:id="@+id/rl_morning_panel"
+                <LinearLayout
+                    android:id="@+id/ll_morning_panel"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="@dimen/global_padding">
+                    android:orientation="vertical">
 
                     <RelativeLayout
-                        android:id="@+id/rl_top_session_panel"
+                        android:id="@+id/rl_top_morning_session_panel"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/global_medium_padding">
 
                         <TextView
                             android:id="@+id/tv_morning_add_data_top"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:layout_alignBaseline="@+id/tv_morning_title"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentTop="true"
-                            android:clickable="true"
-                            android:text="Thêm / sửa"
-                            android:textColor="@color/textview_as_button_selector"/>
+                            style="@style/AddOrEditTitleStyle"
+                          />
 
                         <TextView
                             android:id="@+id/tv_morning_title"
                             style="@style/SessionTitleStyle"
-                            android:text="Buổi sáng"/>
+                            android:text="Buổi sáng" />
                     </RelativeLayout>
 
+                    <View style="@style/IndicatorHorizationStyle" />
+
                     <RelativeLayout
-                        android:id="@+id/rl_main_session_panel"
+                        android:id="@+id/rl_main_morning_session_panel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/rl_top_session_panel"
                         android:gravity="center_horizontal">
 
                         <RelativeLayout
@@ -88,78 +81,61 @@
 
                             <TextView
                                 android:id="@+id/tv_monring_no_subject_title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="@dimen/global_padding"
-                                android:paddingBottom="@dimen/global_padding"
-                                android:text="Dữ liệu trống, "
-                                android:textAlignment="center"
-                                android:textSize="12sp"
-                                android:visibility="visible"/>
+                                style="@style/NoDataTitleStyle"
+                               />
 
                             <TextView
-                                 android:id="@+id/tv_morning_add_data"
+                                android:id="@+id/tv_morning_add_data"
                                 style="@style/AddSubjectTextViewStyle"
                                 android:layout_toEndOf="@+id/tv_monring_no_subject_title"
-                                android:text="thêm ngay"
-                                />
+                                android:text="thêm ngay" />
                         </RelativeLayout>
 
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/rv_list_subject_morning"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:visibility="visible">
-                        </android.support.v7.widget.RecyclerView>
+                            android:visibility="visible"></android.support.v7.widget.RecyclerView>
                     </RelativeLayout>
 
-                </RelativeLayout>
+                </LinearLayout>
 
 
             </android.support.v7.widget.CardView>
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/global_margin">
+            <android.support.v7.widget.CardView style="@style/CardViewSessionStyle">
 
-                <RelativeLayout
-                    android:id="@+id/rl_afternoon_panel"
+                <LinearLayout
+                    android:id="@+id/ll_afternoon_panel"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="@dimen/global_padding">
+                    android:orientation="vertical">
 
                     <RelativeLayout
-                        android:id="@+id/rl_afternoon_top_session_panel"
+                        android:id="@+id/rl_top_afternoon_session_panel"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/global_medium_padding">
 
                         <TextView
                             android:id="@+id/tv_afternoon_add_data_top"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:layout_alignBaseline="@+id/tv_afternoon_title"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentTop="true"
-                            android:clickable="true"
-                            android:text="Thêm / sửa"
-                            android:textColor="@color/textview_as_button_selector"/>
+                            style="@style/AddOrEditTitleStyle"
+                            />
 
                         <TextView
                             android:id="@+id/tv_afternoon_title"
                             style="@style/SessionTitleStyle"
-                            android:text="Buổi chiều"
-                            />
+                            android:text="Buổi chiều" />
                     </RelativeLayout>
 
+                    <View style="@style/IndicatorHorizationStyle" />
+
                     <RelativeLayout
-                        android:id="@+id/rl_afternoon_main_session_panel"
+                        android:id="@+id/rl_main_afternoon_session_panel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/rl_afternoon_top_session_panel"
-                        >
-
+                        android:gravity="center_horizontal">
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
@@ -168,74 +144,61 @@
 
                             <TextView
                                 android:id="@+id/tv_afternoon_no_subject_title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="@dimen/global_padding"
-                                android:paddingBottom="@dimen/global_padding"
-                                android:text="Dữ liệu trống, "
-                                android:textAlignment="center"
-                                android:textSize="12sp"
-                                android:visibility="visible"/>
+                                style="@style/NoDataTitleStyle"
+                                />
 
                             <TextView
                                 android:id="@+id/tv_afternoon_add_data"
                                 style="@style/AddSubjectTextViewStyle"
                                 android:layout_toEndOf="@+id/tv_afternoon_no_subject_title"
-                                android:text="thêm ngay"
-                                />
+                                android:text="thêm ngay" />
                         </RelativeLayout>
+
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/rv_list_subject_afternoon"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:visibility="visible">
-                        </android.support.v7.widget.RecyclerView>
+                            android:visibility="visible"></android.support.v7.widget.RecyclerView>
                     </RelativeLayout>
 
-                </RelativeLayout>
+                </LinearLayout>
+
+
             </android.support.v7.widget.CardView>
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/global_margin">
+            <android.support.v7.widget.CardView style="@style/CardViewSessionStyle">
 
-                <RelativeLayout
-                    android:id="@+id/rl_night_panel"
+                <LinearLayout
+                    android:id="@+id/ll_night_panel"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:padding="@dimen/global_padding">
+                    android:orientation="vertical">
 
                     <RelativeLayout
-                        android:id="@+id/rl_night_top_session_panel"
+                        android:id="@+id/rl_top_night_session_panel"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/global_medium_padding">
 
                         <TextView
                             android:id="@+id/tv_night_add_data_top"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
                             android:layout_alignBaseline="@+id/tv_night_title"
-                            android:layout_alignParentEnd="true"
-                            android:layout_alignParentTop="true"
-                            android:clickable="true"
-                            android:text="Thêm / sửa"
-                            android:textColor="@color/textview_as_button_selector"/>
+                            style="@style/AddOrEditTitleStyle"
+                            />
 
                         <TextView
                             android:id="@+id/tv_night_title"
                             style="@style/SessionTitleStyle"
-                            android:text="Buổi tối"/>
-
+                            android:text="Buổi tối" />
                     </RelativeLayout>
 
+                    <View style="@style/IndicatorHorizationStyle" />
+
                     <RelativeLayout
-                        android:id="@+id/rl_night_main_session_panel"
+                        android:id="@+id/rl_main_night_session_panel"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/rl_night_top_session_panel"
-                        >
+                        android:gravity="center_horizontal">
 
                         <RelativeLayout
                             android:layout_width="wrap_content"
@@ -244,31 +207,26 @@
 
                             <TextView
                                 android:id="@+id/tv_night_no_subject_title"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:paddingTop="@dimen/global_padding"
-                                android:paddingBottom="@dimen/global_padding"
-                                android:text="Dữ liệu trống, "
-                                android:textAlignment="center"
-                                android:textSize="12sp"
-                                android:visibility="visible"/>
+                                style="@style/NoDataTitleStyle"
+                                />
 
                             <TextView
                                 android:id="@+id/tv_night_add_data"
                                 style="@style/AddSubjectTextViewStyle"
                                 android:layout_toEndOf="@+id/tv_night_no_subject_title"
-                                android:text="thêm ngay"
-                                />
+                                android:text="thêm ngay" />
                         </RelativeLayout>
+
                         <android.support.v7.widget.RecyclerView
                             android:id="@+id/rv_list_subject_night"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:visibility="visible">
-                        </android.support.v7.widget.RecyclerView>
+                            android:visibility="visible"></android.support.v7.widget.RecyclerView>
                     </RelativeLayout>
 
-                </RelativeLayout>
+                </LinearLayout>
+
+
             </android.support.v7.widget.CardView>
         </LinearLayout>
     </ScrollView>
@@ -279,21 +237,20 @@
         android:drawableStart="@drawable/ic_add_white_24dp"
         android:padding="@dimen/global_padding"
         android:text="Thêm môn học"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
     <FrameLayout
         android:id="@+id/fl_remove_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:visibility="gone"
-        >
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/iv_remove_area"
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:src="@drawable/ic_remove_cicrle_grey_24dp"
-            android:tint="@color/colorPrimary"/>
+            android:tint="@color/colorPrimary" />
     </FrameLayout>
 </RelativeLayout>

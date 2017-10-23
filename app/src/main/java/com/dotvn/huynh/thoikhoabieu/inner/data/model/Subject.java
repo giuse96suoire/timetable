@@ -9,17 +9,23 @@ import android.os.Parcelable;
  * I toLowerCase name to sure that toán & Toán will not be accepted (t & T)
  */
 
-public class Subject implements Parcelable{
+public class Subject implements Parcelable {
 
-    public Subject(){}
-    public Subject(String id, String name, Teacher teacher){
+    public Subject() {
+    }
+
+    public Subject(String id, String name, Teacher teacher, Score score) {
         this.mId = id.trim();
         this.mName = name.toLowerCase().trim();
         this.mTeacher = teacher;
+        this.mScore = score;
     }
+
     private Teacher mTeacher;
     private String mId;
     private String mName;
+    private Score mScore;
+
     public String getId() {
         return mId;
     }
@@ -48,10 +54,22 @@ public class Subject implements Parcelable{
         return mTeacher;
     }
 
+    public Score getScore() {
+        if (mScore == null) {
+            mScore = new Score();
+        }
+        return mScore;
+    }
+
+    public void setScore(Score score) {
+        mScore = score;
+    }
+
     private Subject(Parcel in) {
         mId = in.readString();
         mName = in.readString();
         mTeacher = in.readParcelable(Teacher.class.getClassLoader());
+        mScore = in.readParcelable(Score.class.getClassLoader());
     }
 
     @Override
@@ -64,7 +82,9 @@ public class Subject implements Parcelable{
         dest.writeString(mId);
         dest.writeString(mName);
         dest.writeParcelable(mTeacher, 0);
+        dest.writeParcelable(mScore, 0);
     }
+
     public static final Creator<Subject> CREATOR
             = new Creator<Subject>() {
         public Subject createFromParcel(Parcel in) {

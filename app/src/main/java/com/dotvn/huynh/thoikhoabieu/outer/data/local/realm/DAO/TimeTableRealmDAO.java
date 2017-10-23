@@ -26,7 +26,7 @@ public class TimeTableRealmDAO extends LocalDAO<TimeTable> {
             @Override
             public void onSuccess(RealmTimeTable item) {
                 if (item.isValid()) {
-                    callback.onSuccess(TimeTableConverter.getInstance().fromRealmToModel(item));
+                    callback.onSuccess(TimeTableConverter.fromRealmToModel(item));
                 } else {
                     callback.onError(null);
                 }
@@ -64,7 +64,7 @@ public class TimeTableRealmDAO extends LocalDAO<TimeTable> {
 
             @Override
             public void onSuccess(List<RealmTimeTable> items) {
-                callback.onSuccess(TimeTableConverter.getInstance().fromListRealmToListModel(items));
+                callback.onSuccess(TimeTableConverter.fromListRealmToListModel(items));
             }
 
             @Override
@@ -81,7 +81,7 @@ public class TimeTableRealmDAO extends LocalDAO<TimeTable> {
 
     @Override
     public void insert(TimeTable item, final LocalDAOCallback<TimeTable> callback) {
-        mRealmDbHelper.insert(TimeTableConverter.getInstance().fromModelToRealm(item), new LocalDAOCallback() {
+        mRealmDbHelper.insert(TimeTableConverter.fromModelToRealm(item), new LocalDAOCallback() {
             @Override
             public void onSuccess(Object item) {
                 // do not do anything
@@ -107,7 +107,7 @@ public class TimeTableRealmDAO extends LocalDAO<TimeTable> {
 
     @Override
     public void insertOrUpdate(TimeTable item, LocalDAOCallback<TimeTable> callback) {
-        mRealmDbHelper.update(TimeTableConverter.getInstance().fromModelToRealm(item), callback);
+        mRealmDbHelper.update(TimeTableConverter.fromModelToRealm(item), callback);
     }
 
     @Override

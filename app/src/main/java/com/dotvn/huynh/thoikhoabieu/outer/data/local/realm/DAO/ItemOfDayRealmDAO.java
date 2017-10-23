@@ -28,7 +28,7 @@ public class ItemOfDayRealmDAO extends LocalDAO<ItemOfDay> {
             @Override
             public void onSuccess(RealmItemOfDay item) {
                 if (item.isValid()) {
-                    callback.onSuccess(ItemOfDayConverter.getInstance().fromRealmToModel(item));
+                    callback.onSuccess(ItemOfDayConverter.fromRealmToModel(item));
                 } else {
                     callback.onError(null);
                 }
@@ -56,12 +56,12 @@ public class ItemOfDayRealmDAO extends LocalDAO<ItemOfDay> {
         mRealmDbHelper.getAllAsync(compareWith, valueToCompare, RealmItemOfDay.class, new LocalDAOCallback<RealmItemOfDay>() {
             @Override
             public void onSuccess(RealmItemOfDay item) {
-                callback.onSuccess(ItemOfDayConverter.getInstance().fromRealmToModel(item));
+                callback.onSuccess(ItemOfDayConverter.fromRealmToModel(item));
             }
 
             @Override
             public void onSuccess(List<RealmItemOfDay> items) {
-                callback.onSuccess(ItemOfDayConverter.getInstance().fromListRealmToListModel(items));
+                callback.onSuccess(ItemOfDayConverter.fromListRealmToListModel(items));
             }
 
             @Override
@@ -86,7 +86,7 @@ public class ItemOfDayRealmDAO extends LocalDAO<ItemOfDay> {
 
             @Override
             public void onSuccess(List<RealmItemOfDay> items) {
-                callback.onSuccess(ItemOfDayConverter.getInstance().fromListRealmToListModel(items));
+                callback.onSuccess(ItemOfDayConverter.fromListRealmToListModel(items));
             }
 
             @Override
@@ -103,7 +103,7 @@ public class ItemOfDayRealmDAO extends LocalDAO<ItemOfDay> {
 
     @Override
     public void insert(ItemOfDay item, final LocalDAOCallback<ItemOfDay> callback) {
-        mRealmDbHelper.insert(ItemOfDayConverter.getInstance().fromModelToRealm(item), new LocalDAOCallback() {
+        mRealmDbHelper.insert(ItemOfDayConverter.fromModelToRealm(item), new LocalDAOCallback() {
             @Override
             public void onSuccess(Object item) {
                 // do not do anything
@@ -128,7 +128,7 @@ public class ItemOfDayRealmDAO extends LocalDAO<ItemOfDay> {
 
     @Override
     public void insertOrUpdate(ItemOfDay item, LocalDAOCallback<ItemOfDay> callback) {
-        mRealmDbHelper.update(ItemOfDayConverter.getInstance().fromModelToRealm(item), callback);
+        mRealmDbHelper.update(ItemOfDayConverter.fromModelToRealm(item), callback);
     }
 
     @Override
@@ -143,7 +143,7 @@ public class ItemOfDayRealmDAO extends LocalDAO<ItemOfDay> {
 
     @Override
     public void deleteList(List<ItemOfDay> listItem,  LocalDAOCallback<ItemOfDay> callback) {
-        RealmList<RealmItemOfDay> realmItemOfDays = ItemOfDayConverter.getInstance().fromListModelToListRealm(listItem);
+        RealmList<RealmItemOfDay> realmItemOfDays = ItemOfDayConverter.fromListModelToListRealm(listItem);
         if (realmItemOfDays != null) {
             for (RealmItemOfDay itemOfDay : realmItemOfDays) {
                 mRealmDbHelper.removeById(RealmItemOfDay.class, RealmItemOfDay.ID, itemOfDay.getId());

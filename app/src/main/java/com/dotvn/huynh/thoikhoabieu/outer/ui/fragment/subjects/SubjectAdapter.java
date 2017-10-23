@@ -37,15 +37,13 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
     private ArrayList<String> mListSelectedSubjectId;
     private Context mContext;
     private SubjectsFragmentContract.View mView;
-    private SubjectFragment.OnSubjectCheckedChangeListener mOnSubjectCheckedChange;
+    private OnSubjectCheckedChangeListener mOnSubjectCheckedChange;
 
     public SubjectAdapter(Context context, SubjectsFragmentContract.View view, List<Subject> listSubject, boolean isSelectableMode, boolean isViewTimeMode, ArrayList<String> listSelectedSubjectId) {
         this.mListSubject = listSubject;
         this.mIsViewTimeMode = isViewTimeMode;
         this.mIsSelectableMode = isSelectableMode;
-        if (isSelectableMode) {
-            mListSelectedSubjects = new ArrayList<>();
-        }
+        this.mListSelectedSubjects = new ArrayList<>();
         this.mContext = context;
         this.mView = view;
         this.mListSelectedSubjectId = listSelectedSubjectId;
@@ -59,12 +57,24 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
         mListSelectedSubjects = listSelectedSubject;
         notifyDataSetChanged();
     }
-
+    public void selectAllItem() {
+        if (mListSelectedSubjects.size() == mListSubject.size()) {
+            mListSelectedSubjects = new ArrayList<>();
+        } else {
+            mListSelectedSubjects = mListSubject;
+        }
+        notifyDataSetChanged();
+    }
+    public void cancelSelectAllItem() {
+        mIsSelectableMode = false;
+        mListSelectedSubjects = new ArrayList<>();
+        notifyDataSetChanged();
+    }
     public void removeSubjectFromSelectedList(Subject subject) {
         mListSelectedSubjects.remove(subject);
     }
 
-    public void setOnSubjectCheckedChangeListener(SubjectFragment.OnSubjectCheckedChangeListener listener) {
+    public void setOnSubjectCheckedChangeListener(OnSubjectCheckedChangeListener listener) {
         mOnSubjectCheckedChange = listener;
     }
 
@@ -90,7 +100,7 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
         holder.mTvSubjectStartTime.setVisibility(mIsViewTimeMode ? View.VISIBLE : View.GONE);
         holder.mTvSubjectStandFor.setVisibility(mIsViewTimeMode ? View.GONE : View.VISIBLE);
         holder.mRlSubjectTimePanel.setVisibility(mIsSelectableMode ? View.GONE : View.VISIBLE);
-        holder.mCbSelectSubject.setVisibility(mIsSelectableMode ? View.VISIBLE : View.GONE);
+        holder.mRlSelectPanel.setVisibility(mIsSelectableMode ? View.VISIBLE : View.GONE);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -105,7 +115,10 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
         holder.mCbSelectSubject.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mOnSubjectCheckedChange.OnSubjectCheckedChange(isChecked, subject);
+                if (mOnSubjectCheckedChange == null) {
+                    return;
+                }
+                mOnSubjectCheckedChange.onSubjectCheckedChange(isChecked, subject);
                 if (isChecked) {
                     addIfNotExist(subject);
                 } else {
@@ -129,6 +142,12 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
                 mView.showRemoveSubjectDialog(mListSubject.get(position));
             }
         });
+        holder.mIbInfoSubject.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mView.showDetailSubjectActivity(mListSubject.get(position));
+            }
+        });
 
         holder.itemView.setBackground(
                 position % 2 == 0
@@ -141,6 +160,14 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
             mListSelectedSubjectId.remove(subject.getId());
             holder.mCbSelectSubject.setChecked(true);
         }
+        holder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                mIsSelectableMode = true;
+                mView.enableSelectMode(true);
+                return true;
+            }
+        });
     }
 
     private void addIfNotExist(Subject subject) {
@@ -156,6 +183,9 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
     }
 
     private int getIndexOfSubjectIfExist(Subject subject) {
+        if (mListSelectedSubjects == null) {
+            return -1;
+        }
         for (int i = 0; i < mListSelectedSubjects.size(); i++) {
             Subject s = mListSelectedSubjects.get(i);
             if (s.getName().equals(subject.getName())) {
@@ -185,17 +215,21 @@ public class SubjectAdapter extends RecyclerView.Adapter<SubjectAdapter.ViewHold
         private CheckBox mCbSelectSubject;
         private RelativeLayout mRlSubjectTimePanel;
         private ImageButton mIbRemoveSubject;
+        private ImageButton mIbInfoSubject;
+        private RelativeLayout mRlSelectPanel;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            mTvSubjectName = (TextView) itemView.findViewById(R.id.tv_subject_name);
-            mTvSubjectTeacher = (TextView) itemView.findViewById(R.id.tv_subject_teacher);
-            mTvSubjectStartTime = (TextView) itemView.findViewById(R.id.tv_subject_start_time);
-            mTvSubjectEndTime = (TextView) itemView.findViewById(R.id.tv_subject_end_time);
-            mTvSubjectStandFor = (TextView) itemView.findViewById(R.id.tv_subject_stand_for);
-            mRlSubjectTimePanel = (RelativeLayout) itemView.findViewById(R.id.rl_friend_name_stand_for_panel);
-            mCbSelectSubject = (CheckBox) itemView.findViewById(R.id.cb_select_friend);
-            mIbRemoveSubject = (ImageButton) itemView.findViewById(R.id.ib_remove_subject);
+            mTvSubjectName = itemView.findViewById(R.id.tv_subject_name);
+            mTvSubjectTeacher = itemView.findViewById(R.id.tv_subject_teacher);
+            mTvSubjectStartTime = itemView.findViewById(R.id.tv_subject_start_time);
+            mTvSubjectEndTime = itemView.findViewById(R.id.tv_subject_end_time);
+            mTvSubjectStandFor = itemView.findViewById(R.id.tv_subject_stand_for);
+            mRlSubjectTimePanel = itemView.findViewById(R.id.rl_subject_start_panel);
+            mCbSelectSubject = itemView.findViewById(R.id.cb_select_friend);
+            mIbRemoveSubject = itemView.findViewById(R.id.ib_remove_subject);
+            mIbInfoSubject = itemView.findViewById(R.id.ib_info_subject);
+            mRlSelectPanel = itemView.findViewById(R.id.rl_select_panel);
         }
 
     }

@@ -13,15 +13,7 @@ import io.realm.RealmList;
  * Created by Manh Hoang Huynh on 11/09/2017.
  */
 
-public class ItemOfDayConverter implements BaseConverter<ItemOfDay, RealmItemOfDay> {
-    private static ItemOfDayConverter mInstance;
-
-    public static ItemOfDayConverter getInstance() {
-        if (mInstance == null) {
-            mInstance = new ItemOfDayConverter();
-        }
-        return mInstance;
-    }
+public  class ItemOfDayConverter {
 
     /**
      * Convert from realm model to model (inner model)
@@ -29,14 +21,13 @@ public class ItemOfDayConverter implements BaseConverter<ItemOfDay, RealmItemOfD
      * @param realmItemOfDay realm model to be converted
      * @return
      */
-    @Override
-    public ItemOfDay fromRealmToModel(RealmItemOfDay realmItemOfDay) {
+    public static ItemOfDay fromRealmToModel(RealmItemOfDay realmItemOfDay) {
         return new ItemOfDay(
                 realmItemOfDay.getId(),
                 realmItemOfDay.getStartTime(),
                 realmItemOfDay.getEndTime(),
-                SubjectConverter.getInstance().fromRealmToModel(realmItemOfDay.getRealmSubject()),
-                OtherConverter.getInstance().fromRealmToModel(realmItemOfDay.getRealmOther()),
+                SubjectConverter.fromRealmToModel(realmItemOfDay.getRealmSubject()),
+                OtherConverter.fromRealmToModel(realmItemOfDay.getRealmOther()),
                 realmItemOfDay.getEvent()
         );
     }
@@ -48,13 +39,13 @@ public class ItemOfDayConverter implements BaseConverter<ItemOfDay, RealmItemOfD
      * @param itemOfDay model to be converted
      * @return
      */
-    public RealmItemOfDay fromModelToRealm(ItemOfDay itemOfDay) {
+    public static RealmItemOfDay fromModelToRealm(ItemOfDay itemOfDay) {
         return new RealmItemOfDay(
                 itemOfDay.getId(),
                 itemOfDay.getStartTime(),
                 itemOfDay.getEndTime(),
-                SubjectConverter.getInstance().fromModelToRealm(itemOfDay.getSubject()),
-                OtherConverter.getInstance().fromModelToRealm(itemOfDay.getOther()),
+                SubjectConverter.fromModelToRealm(itemOfDay.getSubject()),
+                OtherConverter.fromModelToRealm(itemOfDay.getOther()),
                 itemOfDay.getEvent()
         );
     }
@@ -65,7 +56,7 @@ public class ItemOfDayConverter implements BaseConverter<ItemOfDay, RealmItemOfD
      * @param listRealmItemOfDay ist realm model to be converted
      * @return
      */
-    public List<ItemOfDay> fromListRealmToListModel(List<RealmItemOfDay> listRealmItemOfDay) {
+    public static List<ItemOfDay> fromListRealmToListModel(List<RealmItemOfDay> listRealmItemOfDay) {
         List<ItemOfDay> listItemOfDay = new ArrayList<>();
         if (listRealmItemOfDay != null && listRealmItemOfDay.size() != 0) {
             for (RealmItemOfDay realmItemOfDay : listRealmItemOfDay) {
@@ -81,7 +72,7 @@ public class ItemOfDayConverter implements BaseConverter<ItemOfDay, RealmItemOfD
      * @param listItemOfDay ist realm model to be converted
      * @return
      */
-    public RealmList<RealmItemOfDay> fromListModelToListRealm(List<ItemOfDay> listItemOfDay) {
+    public static RealmList<RealmItemOfDay> fromListModelToListRealm(List<ItemOfDay> listItemOfDay) {
         RealmList<RealmItemOfDay> listRealmItemOfDay = new RealmList<>();
         if (listItemOfDay != null && listItemOfDay.size() != 0) {
             for (ItemOfDay itemOfDay : listItemOfDay) {
@@ -91,7 +82,7 @@ public class ItemOfDayConverter implements BaseConverter<ItemOfDay, RealmItemOfD
         return listRealmItemOfDay;
     }
 
-    public List<ItemOfDay> fromListFirebaseToListModel(List<FbItemOfDay> fbItemOfDays) {
+    public static List<ItemOfDay> fromListFirebaseToListModel(List<FbItemOfDay> fbItemOfDays) {
         List<ItemOfDay> result = new ArrayList<>();
         for (FbItemOfDay fbItemOfDay : fbItemOfDays) {
             result.add(fromFirebaseToModel(fbItemOfDay));
@@ -99,7 +90,7 @@ public class ItemOfDayConverter implements BaseConverter<ItemOfDay, RealmItemOfD
         return result;
     }
 
-    public List<FbItemOfDay> fromListModelToListFirebase(List<ItemOfDay> itemOfDays) {
+    public static List<FbItemOfDay> fromListModelToListFirebase(List<ItemOfDay> itemOfDays) {
         List<FbItemOfDay> result = new ArrayList<>();
         for (ItemOfDay itemOfDay : itemOfDays) {
             result.add(fromModelToFirebase(itemOfDay));
@@ -107,24 +98,24 @@ public class ItemOfDayConverter implements BaseConverter<ItemOfDay, RealmItemOfD
         return result;
     }
 
-    public ItemOfDay fromFirebaseToModel(FbItemOfDay fbItemOfDay) {
+    public static ItemOfDay fromFirebaseToModel(FbItemOfDay fbItemOfDay) {
         return new ItemOfDay(
                 fbItemOfDay.getId(),
                 fbItemOfDay.getStartTime(),
                 fbItemOfDay.getEndTime(),
-                SubjectConverter.getInstance().fromFirebaseToModel(fbItemOfDay.getSubject()),
-                OtherConverter.getInstance().fromFirebaseToModel(fbItemOfDay.getOther()),
+                SubjectConverter.fromFirebaseToModel(fbItemOfDay.getSubject()),
+                OtherConverter.fromFirebaseToModel(fbItemOfDay.getOther()),
                 fbItemOfDay.getEvent()
         );
     }
 
-    public FbItemOfDay fromModelToFirebase(ItemOfDay itemOfDay) {
+    public static FbItemOfDay fromModelToFirebase(ItemOfDay itemOfDay) {
         return new FbItemOfDay(
                 itemOfDay.getId(),
                 itemOfDay.getStartTime(),
                 itemOfDay.getEndTime(),
-                SubjectConverter.getInstance().fromModelToFirebase(itemOfDay.getSubject()),
-                OtherConverter.getInstance().fromModelToFirebase(itemOfDay.getOther()),
+                SubjectConverter.fromModelToFirebase(itemOfDay.getSubject()),
+                OtherConverter.fromModelToFirebase(itemOfDay.getOther()),
                 itemOfDay.getEvent()
         );
     }

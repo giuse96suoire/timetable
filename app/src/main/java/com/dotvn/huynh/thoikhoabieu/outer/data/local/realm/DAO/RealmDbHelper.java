@@ -1,5 +1,7 @@
 package com.dotvn.huynh.thoikhoabieu.outer.data.local.realm.DAO;
 
+import android.util.Log;
+
 import com.dotvn.huynh.thoikhoabieu.outer.data.local.LocalDAOCallback;
 
 import io.realm.Realm;
@@ -92,6 +94,7 @@ public class RealmDbHelper<E extends RealmObject> {
         };
         mSingleRealmResult.addChangeListener(listener);
     }
+
     public void getAllAsync(String compareWith, String valueToCompare, final Class<E> classObject,
                             final LocalDAOCallback<E> callback) {
         mResult = mRealm.where(classObject)
@@ -125,6 +128,7 @@ public class RealmDbHelper<E extends RealmObject> {
             }
         });
     }
+
     public void removeList(final RealmList<E> realmListItem) {
         mRealm.executeTransactionAsync(new Realm.Transaction() {
             @Override
@@ -133,6 +137,7 @@ public class RealmDbHelper<E extends RealmObject> {
             }
         });
     }
+
     public void removeAll(final Class<E> classObject) {
         mRealm.executeTransactionAsync(new Realm.Transaction() {
             @Override
@@ -144,6 +149,11 @@ public class RealmDbHelper<E extends RealmObject> {
     }
 
     public void close() {
+        Log.d("xxx", "close connection ======================================================?");
+        if (mResult == null) {
+            return;
+        }
+        mResult.removeAllChangeListeners();
         mRealm.close();
     }
 }

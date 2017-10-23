@@ -20,7 +20,7 @@
         android:visibility="gone"/>
 
     <RelativeLayout
-        android:id="@+id/rl_friend_name_stand_for_panel"
+        android:id="@+id/rl_subject_start_panel"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_centerVertical="true"
@@ -44,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/rl_friend_name_stand_for_panel"
+        android:layout_toEndOf="@+id/rl_subject_start_panel"
         android:layout_toStartOf="@+id/ll_subject_action_button_panel"
         android:orientation="vertical">
 

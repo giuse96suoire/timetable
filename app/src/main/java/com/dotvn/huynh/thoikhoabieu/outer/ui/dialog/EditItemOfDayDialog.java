@@ -39,9 +39,9 @@ public class EditItemOfDayDialog extends DialogFragment
     @BindView(R.id.et_subject_event)
     EditText mEtSubjectEvent;
     @BindView(R.id.btn_dismiss)
-    Button mBtnClose;
+    TextView mBtnClose;
     @BindView(R.id.btn_finish)
-    Button mBtnSave;
+    TextView mBtnSave;
     private ItemOfDay mItemOfDay;
     private TimePickerDialog mTimePickerDialog;
 

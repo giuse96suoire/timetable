@@ -27,9 +27,9 @@ public class FriendRealmDAO extends LocalDAO<Friend> {
             @Override
             public void onSuccess(RealmFriend item) {
                 if (item.isValid()) {
-                    callback.onSuccess(FriendConverter.getInstance().fromRealmToModel(item));
+                    callback.onSuccess(FriendConverter.fromRealmToModel(item));
                 } else {
-                    callback.onSuccess(FriendConverter.getInstance().fromRealmToModel(null));
+                    callback.onSuccess(FriendConverter.fromRealmToModel(null));
                 }
             }
 
@@ -65,7 +65,7 @@ public class FriendRealmDAO extends LocalDAO<Friend> {
 
             @Override
             public void onSuccess(List<RealmFriend> items) {
-                callback.onSuccess(FriendConverter.getInstance().fromListRealmToListModel(items));
+                callback.onSuccess(FriendConverter.fromListRealmToListModel(items));
             }
 
             @Override
@@ -82,7 +82,7 @@ public class FriendRealmDAO extends LocalDAO<Friend> {
 
     @Override
     public void insert(Friend item, LocalDAOCallback<Friend> callback) {
-        mRealmDbHelper.insert(FriendConverter.getInstance().fromModelToRealm(item), callback);
+        mRealmDbHelper.insert(FriendConverter.fromModelToRealm(item), callback);
     }
 
     @Override

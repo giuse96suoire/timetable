@@ -29,7 +29,7 @@ public class TimeTableFirebaseDAO extends RemoteDAO<TimeTable> {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 FbTimeTable data = dataSnapshot.getValue(FbTimeTable.class);
-                callback.onComplete(TimeTableConverter.getInstance().fromFirebaseToModel(data));
+                callback.onComplete(TimeTableConverter.fromFirebaseToModel(data));
             }
 
             @Override
@@ -42,7 +42,7 @@ public class TimeTableFirebaseDAO extends RemoteDAO<TimeTable> {
     @Override
     public void write(String id, TimeTable value, ThreeCallback<Void> callback) {
         mFbDBHelper.write(
-                TimeTableConverter.getInstance().fromModelToFirebase(value),
+                TimeTableConverter.fromModelToFirebase(value),
                 FbUtil.getTimeTableReference(id),
                 callback);
     }
@@ -56,7 +56,7 @@ public class TimeTableFirebaseDAO extends RemoteDAO<TimeTable> {
     @Override
     public void writeWithRandomId(TimeTable value, ThreeCallback<String> callback) {
         mFbDBHelper.writeWithRandomId(
-                TimeTableConverter.getInstance().fromModelToFirebase(value),
+                TimeTableConverter.fromModelToFirebase(value),
                 FbUtil.getTimeTableReference(null),
                 callback);
     }
@@ -64,7 +64,7 @@ public class TimeTableFirebaseDAO extends RemoteDAO<TimeTable> {
     @Override
     public void writeIfNotExist(String id, TimeTable value, ThreeCallback<Void> callback) {
         mFbDBHelper.writeIfNotExist(
-                TimeTableConverter.getInstance().fromModelToFirebase(value),
+                TimeTableConverter.fromModelToFirebase(value),
                 FbUtil.getTimeTableReference(id),
                 callback);
     }

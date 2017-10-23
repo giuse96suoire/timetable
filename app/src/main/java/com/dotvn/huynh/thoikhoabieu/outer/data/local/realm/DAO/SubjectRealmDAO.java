@@ -39,7 +39,7 @@ public class SubjectRealmDAO extends LocalDAO<Subject> {
             @Override
             public void onSuccess(RealmSubject item) {
                 if (item.isValid()) {
-                    callback.onSuccess(SubjectConverter.getInstance().fromRealmToModel(item));
+                    callback.onSuccess(SubjectConverter.fromRealmToModel(item));
                 } else {
                     callback.onError(null);
                 }
@@ -77,7 +77,7 @@ public class SubjectRealmDAO extends LocalDAO<Subject> {
 
             @Override
             public void onSuccess(List<RealmSubject> items) {
-                callback.onSuccess(SubjectConverter.getInstance().fromListRealmToListModel(items));
+                callback.onSuccess(SubjectConverter.fromListRealmToListModel(items));
             }
 
             @Override
@@ -94,7 +94,7 @@ public class SubjectRealmDAO extends LocalDAO<Subject> {
 
     @Override
     public void insert(final Subject subjectItem, final LocalDAOCallback<Subject> callback) {
-        mRealmDbHelper.update(SubjectConverter.getInstance().fromModelToRealm(subjectItem), new LocalDAOCallback() {
+        mRealmDbHelper.update(SubjectConverter.fromModelToRealm(subjectItem), new LocalDAOCallback() {
             @Override
             public void onSuccess(Object item) {
                 // do not do anything
@@ -120,7 +120,7 @@ public class SubjectRealmDAO extends LocalDAO<Subject> {
 
     @Override
     public void insertOrUpdate(Subject item, LocalDAOCallback<Subject> callback) {
-        mRealmDbHelper.update(SubjectConverter.getInstance().fromModelToRealm(item), callback);
+        mRealmDbHelper.update(SubjectConverter.fromModelToRealm(item), callback);
     }
 
     @Override

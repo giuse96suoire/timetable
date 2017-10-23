@@ -13,15 +13,7 @@ import io.realm.RealmList;
  * Created by Manh Hoang Huynh on 07/09/2017.
  */
 
-public class TeacherConverter implements BaseConverter<Teacher, RealmTeacher> {
-    private static TeacherConverter mInstance;
-
-    public static TeacherConverter getInstance() {
-        if (mInstance == null) {
-            mInstance = new TeacherConverter();
-        }
-        return mInstance;
-    }
+public class TeacherConverter {
 
     /**
      * Convert from realm to model(inner model)
@@ -29,7 +21,7 @@ public class TeacherConverter implements BaseConverter<Teacher, RealmTeacher> {
      * @param realmTeacher is model to be converted
      * @return Teacher
      */
-    public Teacher fromRealmToModel(RealmTeacher realmTeacher) {
+    public static Teacher fromRealmToModel(RealmTeacher realmTeacher) {
         if (realmTeacher == null) {
             return new Teacher();
         }
@@ -47,7 +39,7 @@ public class TeacherConverter implements BaseConverter<Teacher, RealmTeacher> {
      * @param teacher is model to be converted
      * @return RealmTeacher
      */
-    public RealmTeacher fromModelToRealm(Teacher teacher) {
+    public static RealmTeacher fromModelToRealm(Teacher teacher) {
         if (teacher == null) {
             return new RealmTeacher();
         }
@@ -65,7 +57,7 @@ public class TeacherConverter implements BaseConverter<Teacher, RealmTeacher> {
      * @param listTeacher is model to be converted
      * @return RealmTeacher
      */
-    public RealmList<RealmTeacher> fromListModelToListRealm(List<Teacher> listTeacher) {
+    public static RealmList<RealmTeacher> fromListModelToListRealm(List<Teacher> listTeacher) {
         RealmList<RealmTeacher> listRealmTeacher = new RealmList<>();
         if (listTeacher != null && listTeacher.size() != 0) {
             for (Teacher teacher : listTeacher) {
@@ -82,7 +74,7 @@ public class TeacherConverter implements BaseConverter<Teacher, RealmTeacher> {
      * @param realmListTeacher is model to be converted
      * @return RealmTeacher
      */
-    public List<Teacher> fromListRealmToListModel(List<RealmTeacher> realmListTeacher) {
+    public static List<Teacher> fromListRealmToListModel(List<RealmTeacher> realmListTeacher) {
         List<Teacher> listTeacher = new ArrayList<>();
         if (realmListTeacher != null && realmListTeacher.size() != 0) {
             for (RealmTeacher teacher : realmListTeacher) {
@@ -92,7 +84,7 @@ public class TeacherConverter implements BaseConverter<Teacher, RealmTeacher> {
         return listTeacher;
     }
 
-    public Teacher fromFirebaseToModel(FbTeacher fbTeacher) {
+    public static Teacher fromFirebaseToModel(FbTeacher fbTeacher) {
         return new Teacher(
                 fbTeacher.getId(),
                 fbTeacher.getName(),
@@ -102,7 +94,7 @@ public class TeacherConverter implements BaseConverter<Teacher, RealmTeacher> {
     }
 
 
-    public FbTeacher fromModelToFirebase(Teacher teacher) {
+    public static FbTeacher fromModelToFirebase(Teacher teacher) {
         return new FbTeacher(
                 teacher.getId(),
                 teacher.getName(),

@@ -22,8 +22,15 @@
     <color name="colorTextDialogMessage">#121212</color>
 
     <color name="colorItemBackground0">#ffffff</color>
-    <color name="colorItemBackground1">#efefef</color>
+    <color name="colorItemBackground1">#f4f4f4</color>
 
     <color name="colorDrawableTextView">#585858</color>
     <color name="colorMainBackground">#F2F2F2</color>
+
+    //color for score
+    <color name="colorBadScore">#df3a3a</color>
+    <color name="colorMediumScore">#d27134</color>
+    <color name="colorGoodScore">#58cf3d</color>
+    <color name="colorBestScore">#03a3ed</color>
+
 </resources>

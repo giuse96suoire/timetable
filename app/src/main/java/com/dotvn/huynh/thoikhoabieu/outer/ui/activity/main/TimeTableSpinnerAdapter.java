@@ -31,7 +31,7 @@ public class TimeTableSpinnerAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        Log.d("xxx", mListTimeTable.size()+" --------------------------------");
+        Log.d("xxx", mListTimeTable.size() + " --------------------------------");
         return mListTimeTable.size();
     }
 
@@ -49,10 +49,11 @@ public class TimeTableSpinnerAdapter extends BaseAdapter {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.timetable_item, parent, false);
-        TextView tvTimeTableName = (TextView)view.findViewById(R.id.tv_timetable_name);
+        TextView tvTimeTableName = (TextView) view.findViewById(R.id.tv_timetable_name);
         tvTimeTableName.setText(mListTimeTable.get(position).getName());
         return view;
     }
+
     @Override
     public View getDropDownView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.timetable_item, parent, false);
@@ -61,9 +62,9 @@ public class TimeTableSpinnerAdapter extends BaseAdapter {
         } else {
             view.setBackground(mContext.getResources().getDrawable(R.drawable.positive_backgroud_selector1));
         }
-        ImageButton imageButton = (ImageButton)view.findViewById(R.id.ib_drop_down);
+        ImageButton imageButton = (ImageButton) view.findViewById(R.id.ib_drop_down);
         imageButton.setVisibility(View.GONE);
-        TextView tvTimeTableName = (TextView)view.findViewById(R.id.tv_timetable_name);
+        TextView tvTimeTableName = (TextView) view.findViewById(R.id.tv_timetable_name);
         tvTimeTableName.setText(mListTimeTable.get(position).getName());
         return view;
     }

@@ -1,94 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
+
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layoutAnimation="@anim/animation_scale_from_center_controller"
-    >
+    android:background="@color/colorWhite"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <ImageButton
+        android:id="@+id/tv_dialog_title"
+        style="@style/ImageButtonHeaderDialogStyle"
+        android:src="@drawable/ic_edit_black_24dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_input_error"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/dialog_backgroud_selector"
-        android:orientation="vertical"
-        android:padding="@dimen/global_padding"
-        android:weightSum="1">
+        android:text="Bạn phải điền đầy đủ thông tin"
+        android:textAlignment="center"
+        android:textColor="@color/colorPrimary"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/et_subject_name"
+        android:imeActionLabel="Tiếp theo"
+        android:imeOptions="actionNext"
+        android:drawableStart="@drawable/ic_subject_primary_24dp"
+        style="@style/TextViewOrEditTextInDilaogStyle"
+        android:hint="Môn học"
+/>
+
+    <AutoCompleteTextView
+        android:id="@+id/actv_teacher"
+        style="@style/TextViewOrEditTextInDilaogStyle"
+        android:drawableStart="@drawable/ic_teachers_primary_24dp"
+        android:hint="Giáo viên"
+        android:imeActionLabel="Xong"
+        android:imeOptions="actionDone"/>
+
+    <View
+        style="@style/IndicatorHorizationStyle"
+        android:layout_marginEnd="@dimen/global_medium_margin"
+        android:layout_marginStart="@dimen/global_medium_margin"
+        android:layout_marginTop="@dimen/margin_element_dialog"
+        android:background="#dadada"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:paddingBottom="@dimen/global_medium_padding"
+        android:paddingStart="@dimen/global_medium_padding"
+        android:paddingTop="@dimen/global_medium_padding">
 
         <TextView
-            android:id="@+id/tv_dialog_title"
-            android:layout_width="300dp"
+            android:id="@+id/btn_dismiss"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/global_margin"
-            android:layout_marginTop="@dimen/global_margin"
-            android:text="Thêm môn học"
-            android:textAlignment="center"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/dialog_title_text_size"/>
-        <TextView
-            android:visibility="gone"
-            android:id="@+id/tv_input_error"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@color/colorPrimary"
-            android:text="Bạn phải điền đầy đủ thông tin"
-            android:textAlignment="center"/>
-
-        <EditText
-            android:id="@+id/et_subject_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_element_dialog"
-            android:background="@color/colorWhite"
-            android:drawablePadding="@dimen/padding_drawable_of_text_view"
-            android:drawableStart="@drawable/ic_subject_primary_24dp"
-            android:hint="Môn học"
-            android:imeActionLabel="Tiếp theo"
-            android:imeOptions="actionNext"
-            android:padding="@dimen/text_view_padding"
-            android:textSize="@dimen/dialog_main_text_size"/>
-
-        <AutoCompleteTextView
-            android:id="@+id/actv_teacher"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_element_dialog"
-            android:background="@color/colorWhite"
-            android:drawablePadding="@dimen/padding_drawable_of_text_view"
-            android:drawableStart="@drawable/ic_teachers_primary_24dp"
-            android:hint="Giáo viên"
-            android:imeActionLabel="Xong"
-            android:imeOptions="actionDone"
-            android:padding="@dimen/text_view_padding"
-            android:textSize="@dimen/dialog_main_text_size"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/global_margin"
+            android:layout_toStartOf="@+id/btn_finish"
+            android:background="@android:color/transparent"
             android:gravity="center"
-            android:orientation="horizontal">
+            android:padding="@dimen/global_padding"
+            android:text="HỦY"
+            android:textColor="@color/negative_text_color_selector"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
 
-            <Button
-                android:id="@+id/btn_dismiss"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toStartOf="@+id/btn_finish"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:text="Thoát"
-                android:textColor="@color/negative_text_color_selector"/>
+        <TextView
+            android:id="@+id/btn_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/global_margin"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:padding="16dp"
+            android:text="LƯU"
+            android:textColor="@color/positive_text_color_selector"
+            android:textSize="12sp"
+            android:textStyle="bold"/>
 
-            <Button
-                android:id="@+id/btn_finish"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginStart="@dimen/global_margin"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:text="Lưu"
-                android:textColor="@color/positive_text_color_selector"/>
-
-        </LinearLayout>
-    </LinearLayout>
-</FrameLayout>
+    </RelativeLayout>
+</LinearLayout>

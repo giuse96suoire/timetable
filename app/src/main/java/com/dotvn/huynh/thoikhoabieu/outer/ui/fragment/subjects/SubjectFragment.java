@@ -1,6 +1,8 @@
 package com.dotvn.huynh.thoikhoabieu.outer.ui.fragment.subjects;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,6 +14,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,6 +23,9 @@ import android.widget.Toast;
 import com.dotvn.huynh.thoikhoabieu.R;
 import com.dotvn.huynh.thoikhoabieu.inner.data.model.Subject;
 import com.dotvn.huynh.thoikhoabieu.outer.data.local.LocalDAOCallback;
+import com.dotvn.huynh.thoikhoabieu.outer.ui.CanSelectAllItem;
+import com.dotvn.huynh.thoikhoabieu.outer.ui.activity.main.MainActivityContract;
+import com.dotvn.huynh.thoikhoabieu.outer.ui.activity.subjectDetail.SubjectDetailActivity;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.activity.subjects.AddSubjectActivity;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.activity.subjects.SubjectsActivityContract;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.dialog.AddSubjectDialog;
@@ -36,7 +42,7 @@ import butterknife.Unbinder;
 import io.realm.exceptions.RealmPrimaryKeyConstraintException;
 
 
-public class SubjectFragment extends Fragment implements SubjectsFragmentContract.View, View.OnClickListener {
+public class SubjectFragment extends Fragment implements SubjectsFragmentContract.View, OnClickListener, OnSubjectCheckedChangeListener, CanSelectAllItem {
     public static final String TAG = SubjectFragment.class.getSimpleName();
     private Unbinder mUnbinder;
     private TimeTableFragment.OnFragmentInteractionListener mListener;
@@ -121,6 +127,7 @@ public class SubjectFragment extends Fragment implements SubjectsFragmentContrac
     private void initListSubjectData() {
         mListSubject = new ArrayList<>();
         mAdapter = new SubjectAdapter(getContext(), this, mListSubject, mIsSelectableMode, false, mListSelectedSubjectId);
+        mAdapter.setOnSubjectCheckedChangeListener(this);
         if (mIsSelectableMode) {
             if (getActivity() instanceof OnSubjectCheckedChangeListener) {
                 mAdapter.setOnSubjectCheckedChangeListener((OnSubjectCheckedChangeListener) getActivity());
@@ -216,7 +223,7 @@ public class SubjectFragment extends Fragment implements SubjectsFragmentContrac
                         mPresenter.removeSubject(subject);
                         if (mIsSelectableMode) {
                             if (getActivity() instanceof OnSubjectCheckedChangeListener) {
-                                ((OnSubjectCheckedChangeListener) getActivity()).OnSubjectCheckedChange(false, subject);
+                                ((OnSubjectCheckedChangeListener) getActivity()).onSubjectCheckedChange(false, subject);
                             }
                             mAdapter.removeSubjectFromSelectedList(subject);
                         }
@@ -258,6 +265,22 @@ public class SubjectFragment extends Fragment implements SubjectsFragmentContrac
         }
     }
 
+    @Override
+    public void showDetailSubjectActivity(Subject subject) {
+        Intent intent = new Intent(getContext(), SubjectDetailActivity.class);
+        intent.putExtra(SubjectDetailActivity.KEY_SUBJECT_EXTRA, subject);
+        startActivity(intent);
+    }
+
+    @Override
+    public void enableSelectMode(boolean isEnable) {
+        Activity activity = getActivity();
+        if (activity instanceof MainActivityContract.View) {
+            ((MainActivityContract.View)activity).enableSelectMode(true);
+        }
+        mAdapter.notifyDataSetChanged();
+    }
+
     /**
      * Show dialog add subject
      */
@@ -270,6 +293,7 @@ public class SubjectFragment extends Fragment implements SubjectsFragmentContrac
             }
         }
         ((AddSubjectDialog) mAddSubjectDialog).setSubject(subject);
+        ((AddSubjectDialog) mAddSubjectDialog).setCurrentListSubject(mListSubject);
         ((AddSubjectDialog) mAddSubjectDialog).setOnFinishCallback(new LocalDAOCallback<Subject>() {
             @Override
             public void onSuccess(Subject item) {
@@ -306,6 +330,21 @@ public class SubjectFragment extends Fragment implements SubjectsFragmentContrac
         }
     }
 
+    @Override
+    public void onSubjectCheckedChange(boolean isChecked, Subject subject) {
+
+    }
+
+    @Override
+    public void selectAll() {
+        mAdapter.selectAllItem();
+    }
+
+    @Override
+    public void cancelSelectAll() {
+        mAdapter.cancelSelectAllItem();
+    }
+
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
@@ -315,7 +354,5 @@ public class SubjectFragment extends Fragment implements SubjectsFragmentContrac
      * If you want activity that contain this fragment handle callback
      * when an item check state change, implement it
      */
-    public interface OnSubjectCheckedChangeListener {
-        void OnSubjectCheckedChange(boolean isChecked, Subject subject);
-    }
+
 }

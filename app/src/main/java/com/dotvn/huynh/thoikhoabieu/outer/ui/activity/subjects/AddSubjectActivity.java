@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.dotvn.huynh.thoikhoabieu.R;
 import com.dotvn.huynh.thoikhoabieu.inner.data.model.Subject;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.dialog.TwoButtonDialog;
+import com.dotvn.huynh.thoikhoabieu.outer.ui.fragment.subjects.OnSubjectCheckedChangeListener;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.fragment.subjects.SubjectFragment;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.fragment.subjects.SubjectsFragmentContract;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.fragment.timeTable.TimeTableFragment;
@@ -36,7 +37,7 @@ import butterknife.Unbinder;
  * if it is too hard for developer, please remove it and create new list for it.
  */
 public class AddSubjectActivity extends AppCompatActivity implements SubjectsActivityContract.View,
-        SubjectFragment.OnSubjectCheckedChangeListener,
+        OnSubjectCheckedChangeListener,
         TimeTableFragment.OnFragmentInteractionListener {
     /**
      * Unbinder of ButterKnife
@@ -163,7 +164,7 @@ public class AddSubjectActivity extends AppCompatActivity implements SubjectsAct
     }
 
     @Override
-    public void OnSubjectCheckedChange(boolean isChecked, Subject subject) {
+    public void onSubjectCheckedChange(boolean isChecked, Subject subject) {
         if (isChecked) {
             addIfNotExist(subject);
         } else {

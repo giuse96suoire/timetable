@@ -3,11 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutAnimation="@anim/animation_scale_from_center_controller"
     android:orientation="vertical">
 
     <ScrollView
-        android:background="@drawable/dialog_backgroud_selector"
+        android:background="@color/colorWhite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
@@ -15,104 +14,83 @@
             android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="@dimen/dialog_padding"
             android:weightSum="1">
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/global_margin"
-                android:layout_marginTop="@dimen/global_margin"
-                android:text="Thông tin"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/dialog_title_text_size"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/global_margin"
-                android:text="Chạm vào mục tương ứng để chỉnh sửa"
-                android:textColor="@color/colorTextNegativeButton"
-                android:textSize="12sp"/>
+            <ImageButton
+                android:id="@+id/tv_dialog_title"
+                style="@style/ImageButtonHeaderDialogStyle"
+                android:src="@drawable/ic_edit_black_24dp"
+                />
 
             <TextView
                 android:id="@+id/tv_subject_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_element_dialog"
-                android:drawablePadding="@dimen/padding_drawable_of_text_view"
                 android:drawableStart="@drawable/ic_subject_dark_24dp"
-                android:gravity="center_vertical"
                 android:hint="Môn học"
-                android:padding="@dimen/text_view_padding"
-                android:textSize="@dimen/dialog_main_text_size"/>
+                style="@style/TextViewOrEditTextInDilaogStyle"
+                />
 
             <TextView
                 android:id="@+id/tv_subject_start_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_element_dialog"
-                android:drawablePadding="@dimen/padding_drawable_of_text_view"
                 android:drawableStart="@drawable/ic_access_time_black_24dp"
-                android:gravity="center_vertical"
                 android:hint="Thời gian bắt đầu"
-                android:padding="@dimen/text_view_padding"
-                android:textSize="@dimen/dialog_main_text_size"/>
+                style="@style/TextViewOrEditTextInDilaogStyle"/>
 
             <TextView
                 android:id="@+id/tv_subject_end_time"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_element_dialog"
-                android:drawablePadding="@dimen/padding_drawable_of_text_view"
                 android:drawableStart="@drawable/ic_access_time_black_24dp"
-                android:gravity="center_vertical"
                 android:hint="Thời gian kết thúc"
-                android:padding="@dimen/text_view_padding"
-                android:textSize="@dimen/dialog_main_text_size"/>
+                style="@style/TextViewOrEditTextInDilaogStyle"/>
 
             <EditText
                 android:id="@+id/et_subject_event"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_element_dialog"
-                android:background="#ffffff"
-                android:drawablePadding="@dimen/padding_drawable_of_text_view"
                 android:drawableStart="@drawable/ic_calendar_dark_24dp"
-                android:gravity="center_vertical"
                 android:hint="Nhắc nhở"
-                android:padding="@dimen/text_view_padding"
-                android:textSize="@dimen/dialog_main_text_size"/>
+                style="@style/TextViewOrEditTextInDilaogStyle"/>
 
-            <LinearLayout
+            <View
+                android:layout_marginTop="@dimen/margin_element_dialog"
+                android:layout_marginStart="@dimen/global_medium_margin"
+                android:layout_marginEnd="@dimen/global_medium_margin"
+                style="@style/IndicatorHorizationStyle"
+                android:background="#dadada"
+                />
+            <RelativeLayout
+                android:paddingTop="@dimen/global_medium_padding"
+                android:paddingBottom="@dimen/global_medium_padding"
+                android:paddingStart="@dimen/global_medium_padding"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:weightSum="2">
+                android:gravity="right"
+                android:orientation="horizontal">
 
-                <Button
+                <TextView
+                    android:layout_toStartOf="@+id/btn_finish"
+                    android:padding="@dimen/global_padding"
+                    android:textStyle="bold"
                     android:id="@+id/btn_dismiss"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toStartOf="@+id/btn_finish"
-                    android:layout_weight="1"
+                    android:gravity="center"
                     android:background="@android:color/transparent"
-                    android:text="Thoát"
+                    android:text="HỦY"
+                    android:textSize="12sp"
                     android:textColor="@color/negative_text_color_selector"/>
 
-                <Button
+                <TextView
+                    android:padding="16dp"
+                    android:textStyle="bold"
+                    android:layout_marginEnd="@dimen/global_margin"
+                    android:textSize="12sp"
                     android:id="@+id/btn_finish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginStart="@dimen/global_margin"
-                    android:layout_weight="1"
+                    android:gravity="center"
                     android:background="@android:color/transparent"
-                    android:text="Lưu"
+                    android:layout_alignParentEnd="true"
+                    android:text="LƯU"
                     android:textColor="@color/positive_text_color_selector"/>
 
-            </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

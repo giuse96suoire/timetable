@@ -106,29 +106,31 @@ public class MainPresenter implements MainActivityContract.Presenter {
     }
 
     @Override
-    public void syncData() {
+    public void syncData(TimeTable timeTable) {
         User cuser = mRemoteManager.getCurrentUser();
         if (cuser == null) {
+            mView.showToast("Đồng bộ thất bại. Bạn chưa đăng nhập. ");
             return;
         }
         mView.onSyncRunning();
-//        mTimeTableInteractor.writeToRemote(new TimeTable(), new ThreeCallback<Void>() {
-//            @Override
-//            public void onComplete() {
-//
-//            }
-//
-//            @Override
-//            public void onSuccess(Void result) {
-//                mView.onSyncSuccess();
-//                mView.showToast("Đồng bộ thành công");
-//            }
-//
-//            @Override
-//            public void onFailure(String message) {
-//                mView.showToast("Đồng bộ thất bại "+message);
-//                mView.onSyncFailure();
-//            }
-//        });
+        mTimeTableInteractor.writeToRemote(timeTable, new ThreeCallback<String>() {
+            @Override
+            public void onComplete() {
+
+            }
+
+            @Override
+            public void onSuccess(String result) {
+                mView.onSyncSuccess();
+                mView.showToast("Đồng bộ thành công");
+            }
+
+            @Override
+            public void onFailure(String message) {
+                mView.showToast("Đồng bộ thất bại "+message);
+                mView.onSyncFailure();
+            }
+        });
     }
+
 }

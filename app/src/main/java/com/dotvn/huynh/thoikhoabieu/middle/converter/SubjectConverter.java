@@ -17,15 +17,9 @@ import io.realm.RealmList;
  * firebase object -> object
  */
 
-public class SubjectConverter implements BaseConverter<Subject, RealmSubject> {
+public class SubjectConverter {
     private static SubjectConverter mInstance;
 
-    public static SubjectConverter getInstance() {
-        if (mInstance == null) {
-            mInstance = new SubjectConverter();
-        }
-        return mInstance;
-    }
 
     /**
      * Convert from realm model to model (inner model)
@@ -33,15 +27,15 @@ public class SubjectConverter implements BaseConverter<Subject, RealmSubject> {
      * @param realmSubject realm model to be converted
      * @return
      */
-    @Override
-    public Subject fromRealmToModel(RealmSubject realmSubject) {
+    public static Subject fromRealmToModel(RealmSubject realmSubject) {
         if (realmSubject == null) {
             return new Subject();
         }
         return new Subject(
                 realmSubject.getId(),
                 realmSubject.getName(),
-                TeacherConverter.getInstance().fromRealmToModel(realmSubject.getTeacher())
+                TeacherConverter.fromRealmToModel(realmSubject.getTeacher()),
+                ScoreConverter.fromRealmToModel(realmSubject.getScore())
         );
     }
 
@@ -51,12 +45,12 @@ public class SubjectConverter implements BaseConverter<Subject, RealmSubject> {
      * @param subject model to be converted
      * @return
      */
-    @Override
-    public RealmSubject fromModelToRealm(Subject subject) {
+    public static RealmSubject fromModelToRealm(Subject subject) {
         return new RealmSubject(
                 subject.getId(),
                 subject.getName(),
-                TeacherConverter.getInstance().fromModelToRealm(subject.getTeacher())
+                TeacherConverter.fromModelToRealm(subject.getTeacher()),
+                ScoreConverter.fromModelToRealm(subject.getScore())
         );
     }
 
@@ -66,8 +60,7 @@ public class SubjectConverter implements BaseConverter<Subject, RealmSubject> {
      * @param listObject is model to be converted
      * @return RealmList<RealmSubject>
      */
-    @Override
-    public RealmList<RealmSubject> fromListModelToListRealm(List<Subject> listObject) {
+    public static RealmList<RealmSubject> fromListModelToListRealm(List<Subject> listObject) {
         RealmList<RealmSubject> listSubject = new RealmList<>();
         if (listObject != null && listObject.size() != 0) {
             for (Subject subject : listObject) {
@@ -83,8 +76,7 @@ public class SubjectConverter implements BaseConverter<Subject, RealmSubject> {
      * @param listRealmSubject ist realm model to be converted
      * @return
      */
-    @Override
-    public List<Subject> fromListRealmToListModel(List<RealmSubject> listRealmSubject) {
+    public static List<Subject> fromListRealmToListModel(List<RealmSubject> listRealmSubject) {
         List<Subject> listSubject = new ArrayList<>();
         if (listRealmSubject != null && listRealmSubject.size() != 0) {
             for (RealmSubject realmSubject : listRealmSubject) {
@@ -94,18 +86,19 @@ public class SubjectConverter implements BaseConverter<Subject, RealmSubject> {
         return listSubject;
     }
 
-    public Subject fromFirebaseToModel(FbSubject fbSubject) {
+    public static Subject fromFirebaseToModel(FbSubject fbSubject) {
         return new Subject(
                 fbSubject.getId(),
                 fbSubject.getName(),
-                TeacherConverter.getInstance().fromFirebaseToModel(fbSubject.getTeacher())
+                TeacherConverter.fromFirebaseToModel(fbSubject.getTeacher()),
+                null
         );
     }
-    public FbSubject fromModelToFirebase(Subject subject) {
+    public static FbSubject fromModelToFirebase(Subject subject) {
         return new FbSubject(
                 subject.getId(),
                 subject.getName(),
-                TeacherConverter.getInstance().fromModelToFirebase(subject.getTeacher())
+                TeacherConverter.fromModelToFirebase(subject.getTeacher())
         );
     }
 

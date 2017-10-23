@@ -26,7 +26,7 @@ public class OneDayRealmDAO extends LocalDAO<OneDay> {
             @Override
             public void onSuccess(RealmOneDay item) {
                 if (item.isValid()) {
-                    callback.onSuccess(OneDayConverter.getInstance().fromRealmToModel(item));
+                    callback.onSuccess(OneDayConverter.fromRealmToModel(item));
                 } else {
                     callback.onError(null);
                 }
@@ -64,7 +64,7 @@ public class OneDayRealmDAO extends LocalDAO<OneDay> {
 
             @Override
             public void onSuccess(List<RealmOneDay> items) {
-                callback.onSuccess(OneDayConverter.getInstance().fromListRealmToListModel(items));
+                callback.onSuccess(OneDayConverter.fromListRealmToListModel(items));
             }
 
             @Override
@@ -81,7 +81,7 @@ public class OneDayRealmDAO extends LocalDAO<OneDay> {
 
     @Override
     public void insert(OneDay item, final LocalDAOCallback<OneDay> callback) {
-        mRealmDbHelper.insert(OneDayConverter.getInstance().fromModelToRealm(item), new LocalDAOCallback() {
+        mRealmDbHelper.insert(OneDayConverter.fromModelToRealm(item), new LocalDAOCallback() {
             @Override
             public void onSuccess(Object item) {
                 // do not do anything
@@ -106,7 +106,7 @@ public class OneDayRealmDAO extends LocalDAO<OneDay> {
 
     @Override
     public void insertOrUpdate(OneDay item, LocalDAOCallback<OneDay> callback) {
-        mRealmDbHelper.update(OneDayConverter.getInstance().fromModelToRealm(item), callback);
+        mRealmDbHelper.update(OneDayConverter.fromModelToRealm(item), callback);
     }
 
     @Override

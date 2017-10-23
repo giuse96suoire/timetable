@@ -35,7 +35,8 @@
         </activity>
         <activity
             android:name=".outer.ui.activity.main.MainActivity"
-            android:configChanges="keyboardHidden|orientation|layoutDirection|screenSize">
+            android:configChanges="keyboardHidden|orientation|layoutDirection|screenSize"
+            android:theme="@style/AppThemeWithCustomToolbar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
@@ -44,22 +45,32 @@
         </activity>
         <activity
             android:name=".outer.ui.activity.subjects.AddSubjectActivity"
-            android:configChanges="keyboardHidden|orientation|layoutDirection|screenSize">
-        </activity>
+            android:configChanges="keyboardHidden|orientation|layoutDirection|screenSize"/>
         <activity
             android:name=".outer.ui.activity.login.LoginActivity"
             android:configChanges="keyboardHidden|orientation|layoutDirection|screenSize"
-            android:label="Đăng nhập">
-        </activity>
+            android:label="Đăng nhập"/>
         <activity
             android:name=".outer.ui.activity.profile.ProfileActivity"
-            android:label="Thông tin cá nhân">
-        </activity>
+            android:label="Thông tin cá nhân"/>
         <activity
             android:name=".outer.ui.activity.addFriend.SearchFriendActivity"
-            android:label="Thêm bạn">
+            android:label="Thêm bạn"/>
+        <activity android:name=".outer.ui.activity.createTimeTable.CreateTimeTableActivity"/>
+        <activity android:name=".outer.ui.activity.splash.SplashActivity">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN"/> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER"/> -->
+            <!-- </intent-filter> -->
         </activity>
-        <activity android:name=".outer.ui.activity.createTimeTable.CreateTimeTableActivity">
+        <activity
+            android:name=".outer.ui.activity.subjectDetail.SubjectDetailActivity"
+            android:label="Chi tiết"/>
+        <activity android:name=".outer.ui.activity.chart.ChartActivity"
+            android:label="Biểu đồ và thống kê">
         </activity>
     </application>
 

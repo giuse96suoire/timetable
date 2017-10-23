@@ -26,7 +26,7 @@ public class TeacherRealmDAO extends LocalDAO<Teacher> {
             @Override
             public void onSuccess(RealmTeacher item) {
                 if (item.isValid()) {
-                    callback.onSuccess(TeacherConverter.getInstance().fromRealmToModel(item));
+                    callback.onSuccess(TeacherConverter.fromRealmToModel(item));
                 } else {
                     callback.onError(null);
                 }
@@ -64,7 +64,7 @@ public class TeacherRealmDAO extends LocalDAO<Teacher> {
 
             @Override
             public void onSuccess(List<RealmTeacher> items) {
-                callback.onSuccess(TeacherConverter.getInstance().fromListRealmToListModel(items));
+                callback.onSuccess(TeacherConverter.fromListRealmToListModel(items));
             }
 
             @Override
@@ -81,7 +81,7 @@ public class TeacherRealmDAO extends LocalDAO<Teacher> {
 
     @Override
     public void insert(Teacher item, final LocalDAOCallback<Teacher> callback) {
-        mRealmDbHelper.insert(TeacherConverter.getInstance().fromModelToRealm(item), new LocalDAOCallback() {
+        mRealmDbHelper.insert(TeacherConverter.fromModelToRealm(item), new LocalDAOCallback() {
             @Override
             public void onSuccess(Object item) {
                 // do not do anything
@@ -106,7 +106,7 @@ public class TeacherRealmDAO extends LocalDAO<Teacher> {
 
     @Override
     public void insertOrUpdate(Teacher item, LocalDAOCallback<Teacher> callback) {
-        mRealmDbHelper.update(TeacherConverter.getInstance().fromModelToRealm(item), callback);
+        mRealmDbHelper.update(TeacherConverter.fromModelToRealm(item), callback);
     }
 
     @Override

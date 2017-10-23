@@ -97,7 +97,7 @@ public class UserInteractor implements Interactors.UserInteractor {
     public void addFriendToRemote(String userId, Friend friend, ThreeCallback<Void> callback) {
         mUserRemoteDAO.updateProperty(
                 FbUtil.getUserPropertyReference(userId,FbUser.PROPERTY_FRIENDS),
-                FriendConverter.getInstance().fromModelToFirebase(friend),
+                FriendConverter.fromModelToFirebase(friend),
                 callback
                 );
     }

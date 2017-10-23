@@ -25,12 +25,13 @@ public interface MainActivityContract {
         void onSyncFailure();
         void onSyncRunning();
         void setCurrentTimeTable(String timeTableId);
+        void enableSelectMode(boolean isEnable);
     }
     interface Presenter {
         void loadData();
         void regisUserLoginStateChagedCallBack();
         void addUserIfNotExist(User user);
-        void syncData();
+        void syncData(TimeTable timeTable);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.dotvn.huynh.thoikhoabieu.middle.converter;
 
+
 import com.dotvn.huynh.thoikhoabieu.inner.data.model.ItemOfDay;
 import com.dotvn.huynh.thoikhoabieu.inner.data.model.OneDay;
 import com.dotvn.huynh.thoikhoabieu.outer.data.local.realm.model.RealmItemOfDay;
@@ -17,15 +18,8 @@ import io.realm.RealmList;
  * Created by Manh Hoang Huynh on 07/09/2017.
  */
 
-public class OneDayConverter implements BaseConverter<com.dotvn.huynh.thoikhoabieu.inner.data.model.OneDay, RealmOneDay> {
-    private static OneDayConverter mInstance;
+public class OneDayConverter {
 
-    public static OneDayConverter getInstance() {
-        if (mInstance == null) {
-            mInstance = new OneDayConverter();
-        }
-        return mInstance;
-    }
 
     /**
      * Convert from realm to model (inner model)
@@ -33,17 +27,17 @@ public class OneDayConverter implements BaseConverter<com.dotvn.huynh.thoikhoabi
      * @param realmOneDay ist realm model to be converted
      * @return FbOneDay
      */
-    public com.dotvn.huynh.thoikhoabieu.inner.data.model.OneDay fromRealmToModel(RealmOneDay realmOneDay) {
+    public static OneDay fromRealmToModel(RealmOneDay realmOneDay) {
         if (realmOneDay == null) {
             return null;
         }
         List<ItemOfDay> listItemOfDay = new ArrayList<>();
         if (realmOneDay.getListItemOfDay() != null && realmOneDay.getListItemOfDay().size() != 0) {
             for (RealmItemOfDay realmItemOfDay : realmOneDay.getListItemOfDay()) {
-                listItemOfDay.add(ItemOfDayConverter.getInstance().fromRealmToModel(realmItemOfDay));
+                listItemOfDay.add(ItemOfDayConverter.fromRealmToModel(realmItemOfDay));
             }
         }
-        return new com.dotvn.huynh.thoikhoabieu.inner.data.model.OneDay(
+        return new OneDay(
                 realmOneDay.getId(),
                 realmOneDay.getDayOfWeek(),
                 listItemOfDay
@@ -57,9 +51,8 @@ public class OneDayConverter implements BaseConverter<com.dotvn.huynh.thoikhoabi
      * @param listRealmOneDay is list realm model to be converted
      * @return List<FbOneDay>
      */
-    @Override
-    public List<OneDay> fromListRealmToListModel(List<RealmOneDay> listRealmOneDay) {
-        List<com.dotvn.huynh.thoikhoabieu.inner.data.model.OneDay> listOneDay = new ArrayList<>();
+    public static List<OneDay> fromListRealmToListModel(List<RealmOneDay> listRealmOneDay) {
+        List<OneDay> listOneDay = new ArrayList<>();
         if (listRealmOneDay != null && listRealmOneDay.size() != 0) {
             for (RealmOneDay realmOneDay : listRealmOneDay) {
                 listOneDay.add(fromRealmToModel(realmOneDay));
@@ -74,11 +67,11 @@ public class OneDayConverter implements BaseConverter<com.dotvn.huynh.thoikhoabi
      * @param oneDay is model to be converted
      * @return RealmOneDay
      */
-    public RealmOneDay fromModelToRealm(com.dotvn.huynh.thoikhoabieu.inner.data.model.OneDay oneDay) {
+    public static RealmOneDay fromModelToRealm(OneDay oneDay) {
         RealmList<RealmItemOfDay> listRealmItemOfDay = new RealmList<>();
         if (oneDay.getListItemOfDay() != null && oneDay.getListItemOfDay().size() != 0) {
             for (ItemOfDay itemOfDay : oneDay.getListItemOfDay()) {
-                listRealmItemOfDay.add(ItemOfDayConverter.getInstance().fromModelToRealm(itemOfDay));
+                listRealmItemOfDay.add(ItemOfDayConverter.fromModelToRealm(itemOfDay));
             }
         }
         return new RealmOneDay(
@@ -94,10 +87,10 @@ public class OneDayConverter implements BaseConverter<com.dotvn.huynh.thoikhoabi
      * @param listOneday is model to be converted
      * @return RealmList<RealmOneDay>
      */
-    public RealmList<RealmOneDay> fromListModelToListRealm(List<OneDay> listOneday) {
+    public static RealmList<RealmOneDay> fromListModelToListRealm(List<OneDay> listOneday) {
         RealmList<RealmOneDay> listRealmOneDay = new RealmList<>();
         if (listOneday != null && listOneday.size() != 0) {
-            for (com.dotvn.huynh.thoikhoabieu.inner.data.model.OneDay oneday : listOneday) {
+            for (OneDay oneday : listOneday) {
                 listRealmOneDay.add(fromModelToRealm(oneday));
             }
         }
@@ -110,7 +103,7 @@ public class OneDayConverter implements BaseConverter<com.dotvn.huynh.thoikhoabi
      * @param listOneDay is list model to be converted
      * @return RealmOneDay
      */
-    public Map<String, FbOneDay> fromListModelToMapFirebase(List<OneDay> listOneDay) {
+    public static Map<String, FbOneDay> fromListModelToMapFirebase(List<OneDay> listOneDay) {
         if (listOneDay == null) {
             return null;
         }
@@ -121,23 +114,23 @@ public class OneDayConverter implements BaseConverter<com.dotvn.huynh.thoikhoabi
         return result;
     }
 
-    public OneDay fromFirebaseToModel(FbOneDay fbOneDay) {
-        return new com.dotvn.huynh.thoikhoabieu.inner.data.model.OneDay(
+    public static OneDay fromFirebaseToModel(FbOneDay fbOneDay) {
+        return new OneDay(
                 fbOneDay.getId(),
                 fbOneDay.getDayOfWeek(),
-                ItemOfDayConverter.getInstance().fromListFirebaseToListModel(fbOneDay.getListItemOfDay())
+                ItemOfDayConverter.fromListFirebaseToListModel(fbOneDay.getListItemOfDay())
         );
     }
 
-    public FbOneDay fromModelToFirebase(com.dotvn.huynh.thoikhoabieu.inner.data.model.OneDay oneDay) {
+    public static FbOneDay fromModelToFirebase(OneDay oneDay) {
         return new FbOneDay(
                 oneDay.getId(),
                 oneDay.getDayOfWeek(),
-                ItemOfDayConverter.getInstance().fromListModelToListFirebase(oneDay.getListItemOfDay())
+                ItemOfDayConverter.fromListModelToListFirebase(oneDay.getListItemOfDay())
         );
     }
 
-    public Map<String, OneDay> fromMapFirebaseToMapModel(Map<String, FbOneDay> fbMap) {
+    public static Map<String, OneDay> fromMapFirebaseToMapModel(Map<String, FbOneDay> fbMap) {
         Map<String, OneDay> result = new HashMap<>();
         for (Map.Entry<String, FbOneDay> entry : fbMap.entrySet()) {
             result.put(entry.getKey(),
@@ -146,7 +139,7 @@ public class OneDayConverter implements BaseConverter<com.dotvn.huynh.thoikhoabi
         return result;
     }
 
-    public List<OneDay> fromMapFirebaseToListModel(Map<String, FbOneDay> fbMap) {
+    public static List<OneDay> fromMapFirebaseToListModel(Map<String, FbOneDay> fbMap) {
         List<OneDay> result = new ArrayList<>();
         for (Map.Entry<String, FbOneDay> entry : fbMap.entrySet()) {
             result.add(fromFirebaseToModel(entry.getValue()));
@@ -154,7 +147,7 @@ public class OneDayConverter implements BaseConverter<com.dotvn.huynh.thoikhoabi
         return result;
     }
 
-    public Map<String, FbOneDay> fromMapModelToMapFirebase(Map<String, OneDay> map) {
+    public static Map<String, FbOneDay> fromMapModelToMapFirebase(Map<String, OneDay> map) {
         Map<String, FbOneDay> result = new HashMap<>();
         for (Map.Entry<String, OneDay> entry : map.entrySet()) {
             result.put(entry.getKey(),

@@ -17,53 +17,45 @@ import io.realm.RealmList;
  */
 
 public class TimeTableConverter {
-    private static TimeTableConverter mInstance;
-
-    public static TimeTableConverter getInstance() {
-        if (mInstance == null) {
-            mInstance = new TimeTableConverter();
-        }
-        return mInstance;
-    }
-
-    public TimeTable fromFirebaseToModel(FbTimeTable fbTimeTable) {
+ 
+    public static TimeTable fromFirebaseToModel(FbTimeTable fbTimeTable) {
         return new TimeTable(
                 fbTimeTable.getId(),
                 fbTimeTable.getName(),
                 fbTimeTable.getDescription(),
-                OneDayConverter.getInstance().fromMapFirebaseToListModel(fbTimeTable.getData()),
+                OneDayConverter.fromMapFirebaseToListModel(fbTimeTable.getData()),
                 fbTimeTable.getOwnerId(),
-                FriendConverter.getInstance().fromMapFirebaseToListModel(fbTimeTable.getCanRead()),
-                FriendConverter.getInstance().fromMapFirebaseToListModel(fbTimeTable.getCanWrite())
+                FriendConverter.fromMapFirebaseToListModel(fbTimeTable.getCanRead()),
+                FriendConverter.fromMapFirebaseToListModel(fbTimeTable.getCanWrite())
         );
     }
 
-    public FbTimeTable fromModelToFirebase(TimeTable timeTable) {
+    public static FbTimeTable fromModelToFirebase(TimeTable timeTable) {
         return new FbTimeTable(
                 timeTable.getId(),
                 timeTable.getName(),
                 timeTable.getDescription(),
-                OneDayConverter.getInstance().fromListModelToMapFirebase(timeTable.getData()),
+                OneDayConverter.fromListModelToMapFirebase(timeTable.getData()),
                 timeTable.getOwnerId(),
-                FriendConverter.getInstance().fromListModelToMapFirebase(timeTable.getCanRead()),
-                FriendConverter.getInstance().fromListModelToMapFirebase(timeTable.getCanWrite())
+                FriendConverter.fromListModelToMapFirebase(timeTable.getCanRead()),
+                FriendConverter.fromListModelToMapFirebase(timeTable.getCanWrite())
         );
     }
 
-    public TimeTable fromRealmToModel(RealmTimeTable realmTimeTable) {
+    public static TimeTable fromRealmToModel(RealmTimeTable realmTimeTable) {
 
         return  new TimeTable(
                 realmTimeTable.getId(),
                 realmTimeTable.getName(),
                 realmTimeTable.getDescription(),
-                OneDayConverter.getInstance().fromListRealmToListModel(realmTimeTable.getData()),
+                OneDayConverter.fromListRealmToListModel(realmTimeTable.getData()),
                 realmTimeTable.getOwnerId(),
-                FriendConverter.getInstance().fromListRealmToListModel(realmTimeTable.getCanRead()),
-                FriendConverter.getInstance().fromListRealmToListModel(realmTimeTable.getCanWrite())
+                FriendConverter.fromListRealmToListModel(realmTimeTable.getCanRead()),
+                FriendConverter.fromListRealmToListModel(realmTimeTable.getCanWrite())
         );
     }
 
-    public RealmTimeTable fromModelToRealm(TimeTable timeTable) {
+    public static RealmTimeTable fromModelToRealm(TimeTable timeTable) {
         if (timeTable == null) {
             return null;
         }
@@ -74,19 +66,19 @@ public class TimeTableConverter {
         RealmList<RealmOneDay> realmOneDays = new RealmList<>();
         if (timeTable.getData() != null) {
             for (OneDay oneDay : timeTable.getData()) {
-                realmOneDays.add(OneDayConverter.getInstance().fromModelToRealm(oneDay));
+                realmOneDays.add(OneDayConverter.fromModelToRealm(oneDay));
             }
         }
 
         result.setData(realmOneDays);
-        RealmList<RealmFriend> canRead = FriendConverter.getInstance().fromListModelToListRealm(timeTable.getCanRead());
-        RealmList<RealmFriend> canWrite = FriendConverter.getInstance().fromListModelToListRealm(timeTable.getCanWrite());
+        RealmList<RealmFriend> canRead = FriendConverter.fromListModelToListRealm(timeTable.getCanRead());
+        RealmList<RealmFriend> canWrite = FriendConverter.fromListModelToListRealm(timeTable.getCanWrite());
         result.setCanRead(canRead);
         result.setCanWrite(canWrite);
         return result;
     }
 
-    public List<TimeTable> fromListRealmToListModel(List<RealmTimeTable> realmTimeTable) {
+    public static List<TimeTable> fromListRealmToListModel(List<RealmTimeTable> realmTimeTable) {
         List<TimeTable> result = new ArrayList<>();
         for (RealmTimeTable rt : realmTimeTable) {
             result.add(fromRealmToModel(rt));

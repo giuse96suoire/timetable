@@ -1,32 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="70dp"
-    android:background="@drawable/subject_item_backgroud_selector0"
+    android:layout_height="72dp"
+    android:background="@drawable/subject_item_backgroud_selector1"
     android:clickable="true"
     android:gravity="center"
-    android:paddingBottom="12dp"
-    android:paddingEnd="@dimen/global_padding"
-    android:paddingStart="10dp"
-    android:paddingTop="@dimen/global_padding">
+  >
 
-    <CheckBox
-        android:id="@+id/cb_select_friend"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/ll_friend_main_panel"
-        android:layout_alignParentStart="true"
-        android:visibility="gone"/>
 
     <RelativeLayout
-        android:id="@+id/rl_friend_name_stand_for_panel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/cb_select_friend"
+        android:id="@+id/rl_select_panel"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:gravity="center"
+        android:padding="7dp">
+        <CheckBox
+            android:id="@+id/cb_select_friend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_subject_start_panel"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
         android:clickable="true"
-        android:gravity="center">
+        android:gravity="center"
+        android:padding="7dp">
 
         <TextView
             android:id="@+id/tv_subject_start_time"
@@ -34,7 +35,7 @@
             android:layout_height="wrap_content"
             android:text="07:00"
             android:textColor="#000000"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/tv_subject_end_time"
@@ -43,16 +44,16 @@
             android:layout_below="@id/tv_subject_start_time"
             android:text="07:40"
             android:textColor="#000000"
-            android:textSize="12sp"/>
+            android:textSize="12sp" />
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/ll_friend_main_panel"
+        android:layout_toEndOf="@+id/rl_subject_start_panel"
+        android:gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/rl_friend_name_stand_for_panel"
-        android:layout_toStartOf="@+id/ib_subject_event"
+        android:layout_toStartOf="@+id/ll_subject_action_button_panel"
         android:orientation="vertical">
 
         <TextView
@@ -61,31 +62,36 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:paddingEnd="@dimen/global_margin"
-            android:paddingStart="@dimen/global_margin"
             android:text="LẬP TRÌNH CĂN BẢN"
             android:textSize="@dimen/text_size_subject_item_name"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_subject_teacher"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_subject_name"
             android:ellipsize="end"
             android:maxLines="1"
-            android:paddingEnd="@dimen/global_margin"
-            android:paddingStart="@dimen/global_margin"
             android:text="Thầy Mạnh Hoàng Huynh"
-            android:textSize="@dimen/text_size_subject_item_teacher"/>
+            android:textSize="@dimen/text_size_subject_item_teacher" />
     </LinearLayout>
 
-    <ImageButton
-        android:layout_centerVertical="true"
-        android:id="@+id/ib_subject_event"
+    <LinearLayout
+        android:id="@+id/ll_subject_action_button_panel"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_alignParentEnd="true"
-        android:background="@drawable/calendar_image_selector"
-        />
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingEnd="@dimen/global_padding"
+        android:paddingStart="@dimen/global_padding">
+        <ImageButton
+            android:id="@+id/ib_subject_event"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/calendar_image_selector" />
+    </LinearLayout>
 </RelativeLayout>

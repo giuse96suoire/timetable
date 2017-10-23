@@ -7,6 +7,14 @@
         <item name="colorPrimaryDark">@color/colorPrimary</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <style name="AppThemeWithCustomToolbar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
     <style name="DrawerMenuItem">
         <item name="android:typeface">serif</item>
         <item name="android:textSize">@dimen/text_size_menu_item</item>
@@ -16,8 +24,14 @@
         <item name="android:padding">@dimen/global_padding</item>
         <item name="android:drawablePadding">@dimen/global_padding</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_height">60dp</item>
         <item name="android:clickable">true</item>
+    </style>
+    <style name="DrawerMenuItemIconStyle">
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:padding">@dimen/global_padding</item>
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
     </style>
     <style name="BottomTextViewAsButtonStyle">
         <item name="android:clickable">true</item>
@@ -63,11 +77,71 @@
         <item name="android:visibility">visible</item>
     </style>
     <style name="SettingItemStyle">
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">15sp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:drawablePadding">@dimen/global_padding</item>
-        <item name="android:layout_marginTop">@dimen/global_large_margin</item>
+    </style>
+
+    <style name="CardViewSessionStyle">
+        <item name="android:layout_margin">@dimen/global_medium_margin</item>
+        <item name="android:paddingTop">@dimen/global_medium_padding</item>
+        <item name="android:paddingBottom">@dimen/global_medium_padding</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/global_margin</item>
+    </style>
+    <style name="IndicatorHorizationStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#f4f4f4</item>
+    </style>
+    <style name="IndicatorVerticalStyle">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#f4f4f4</item>
+    </style>
+    <style name="NoDataTitleStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">@dimen/global_padding</item>
+        <item name="android:paddingTop">@dimen/global_padding</item>
+        <item name="android:text">Dữ liệu trống, </item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="AddOrEditTitleStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_alignParentEnd">true</item>
+        <item name="android:layout_alignParentTop">true</item>
+        <item name="android:text">Thêm / sửa</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textColor">@color/textview_as_button_selector</item>
+    </style>
+    <style name="VisibleMenuItemStyle">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+    <style name="ImageButtonHeaderDialogStyle">
+        <item name="android:layout_width">300dp</item>
+        <item name="android:layout_height">90dp</item>
+        <item name="android:layout_marginBottom">@dimen/global_margin</item>
+        <item name="android:background">@drawable/header_dialog_green</item>
+        <item name="android:tint">#ffffff</item>
+    </style>
+    <style name="TextViewOrEditTextInDilaogStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/margin_element_dialog</item>
+        <item name="android:background">@color/colorWhite</item>
+        <item name="android:drawablePadding">@dimen/padding_drawable_of_text_view</item>
+        <item name="android:padding">@dimen/text_view_padding</item>
+        <item name="android:layout_marginStart">@dimen/text_view_padding</item>
+        <item name="android:layout_marginEnd">@dimen/text_view_padding</item>
+        <item name="android:textSize">@dimen/dialog_main_text_size</item>
     </style>
 </resources>
 

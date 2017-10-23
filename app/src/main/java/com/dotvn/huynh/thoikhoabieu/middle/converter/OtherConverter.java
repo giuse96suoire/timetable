@@ -13,22 +13,15 @@ import io.realm.RealmList;
  * Created by Manh Hoang Huynh on 07/09/2017.
  */
 
-public class OtherConverter implements BaseConverter<Other, RealmOther> {
-    private static OtherConverter mInstance;
-
-    public static OtherConverter getInstance() {
-        if (mInstance == null) {
-            mInstance = new OtherConverter();
-        }
-        return mInstance;
-    }
+public class OtherConverter {
+ 
     /**
      * Convert from  model to realm(outer model)
      *
      * @param other is model to be converted
      * @return RealmOther
      */
-    public RealmOther fromModelToRealm(Other other) {
+    public static RealmOther fromModelToRealm(Other other) {
         if (other == null) {
             return new RealmOther();
         }
@@ -45,7 +38,7 @@ public class OtherConverter implements BaseConverter<Other, RealmOther> {
      * @param realmOther ist realm model to be converted
      * @return Other
      */
-    public Other fromRealmToModel(RealmOther realmOther) {
+    public static Other fromRealmToModel(RealmOther realmOther) {
         if (realmOther == null) {
             return new Other();
         }
@@ -62,7 +55,7 @@ public class OtherConverter implements BaseConverter<Other, RealmOther> {
      * @param realmListOther is list realm model to be converted
      * @return List<Other>
      */
-    public List<Other> fromListRealmToListModel(List<RealmOther> realmListOther) {
+    public static List<Other> fromListRealmToListModel(List<RealmOther> realmListOther) {
         List<Other> listOther = new ArrayList<>();
         if (realmListOther != null && realmListOther.size() != 0) {
             for (RealmOther realmOther : realmListOther) {
@@ -78,7 +71,7 @@ public class OtherConverter implements BaseConverter<Other, RealmOther> {
      * @param listOther is model to be converted
      * @return RealmList<RealmOther>
      */
-    public RealmList<RealmOther> fromListModelToListRealm(List<Other> listOther) {
+    public static RealmList<RealmOther> fromListModelToListRealm(List<Other> listOther) {
         RealmList<RealmOther> listRealmOther = new RealmList<>();
         if (listOther != null && listOther.size() != 0) {
             for (Other other : listOther) {
@@ -87,7 +80,7 @@ public class OtherConverter implements BaseConverter<Other, RealmOther> {
         }
         return listRealmOther;
     }
-    public Other fromFirebaseToModel(FbOther fbOther) {
+    public static Other fromFirebaseToModel(FbOther fbOther) {
         return new Other(
                 fbOther.getId(),
                 fbOther.getTitle(),
@@ -95,7 +88,7 @@ public class OtherConverter implements BaseConverter<Other, RealmOther> {
         );
     }
 
-    public FbOther fromModelToFirebase(Other other) {
+    public static FbOther fromModelToFirebase(Other other) {
         return new FbOther(
                 other.getId(),
                 other.getTitle(),

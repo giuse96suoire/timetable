@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -18,7 +19,6 @@ import com.dotvn.huynh.thoikhoabieu.R;
 import com.dotvn.huynh.thoikhoabieu.inner.data.model.TimeTable;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.dialog.TwoButtonDialog;
 import com.dotvn.huynh.thoikhoabieu.outer.ui.fragment.friends.FriendsFragment;
-import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
 
@@ -61,6 +61,8 @@ public class CreateTimeTableActivity extends AppCompatActivity
 
     @Override
     public void initView() {
+//        Toolbar toolbar = findViewById(R.id.toolbar_create_timetable);
+//        setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_chevron_left_white_24dp);
         mTlHeaderTimeTableSetting.addOnTabSelectedListener(this);

@@ -3,10 +3,9 @@ package com.dotvn.huynh.thoikhoabieu.inner.data.interactors;
 import com.dotvn.huynh.thoikhoabieu.inner.data.Interactors;
 import com.dotvn.huynh.thoikhoabieu.inner.data.model.ItemOfDay;
 import com.dotvn.huynh.thoikhoabieu.inner.data.model.Subject;
-import com.dotvn.huynh.thoikhoabieu.middle.converter.ItemOfDayConverter;
 import com.dotvn.huynh.thoikhoabieu.outer.data.DAOContainer;
-import com.dotvn.huynh.thoikhoabieu.outer.data.local.LocalDAOCallback;
 import com.dotvn.huynh.thoikhoabieu.outer.data.local.LocalDAO;
+import com.dotvn.huynh.thoikhoabieu.outer.data.local.LocalDAOCallback;
 import com.dotvn.huynh.thoikhoabieu.outer.data.local.realm.model.RealmItemOfDay;
 
 import java.util.List;

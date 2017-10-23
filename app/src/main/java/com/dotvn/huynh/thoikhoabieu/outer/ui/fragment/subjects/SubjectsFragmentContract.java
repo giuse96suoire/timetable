@@ -14,6 +14,8 @@ public interface SubjectsFragmentContract {
         void showAddSubjectDialog(Subject subject);
         void showRemoveSubjectDialog(Subject subject);
         void updateListSubjects(List<Subject> listSubject);
+        void showDetailSubjectActivity(Subject subject);
+        void enableSelectMode(boolean isEnable);
         SubjectAdapter getAdapter();
     }
     interface Presenter {
